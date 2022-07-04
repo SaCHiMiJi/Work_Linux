@@ -86,6 +86,13 @@ func Plus_binary(n1, n2 string, bitLen uint8) int64 {
 //output
 //-9 7
 
+//1100
+//0011
+//5
+
+//output
+//-1 -7
+
 func twosComplToInt(x string) int64 {
 
 	var result int64 = 0
