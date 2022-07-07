@@ -10,7 +10,10 @@ int main()
   L.insert_back("Dragonite");
   L.insert_back("Natu");
   L.printCardList();
-  L.shuffle(2);
+  L.shuffle(327);
+  L.printCardList();
+  L.pop_back();
+  L.printCardList();
   Card * curr = L.head;
   while(curr!=NULL) {
     cout << curr->name << endl;
