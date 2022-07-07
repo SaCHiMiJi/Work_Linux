@@ -6,9 +6,11 @@ int main()
 {
   CardList L;
   L.insert_back("Pokemon");
-  L.insert_back("Natu");
   L.insert_back("Steelix");
   L.insert_back("Dragonite");
+  L.insert_back("Natu");
+  L.printCardList();
+  L.shuffle(2);
   Card * curr = L.head;
   while(curr!=NULL) {
     cout << curr->name << endl;

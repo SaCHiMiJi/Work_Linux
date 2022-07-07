@@ -5,12 +5,10 @@
 using namespace std;
 
 class CardList{
-    private:
-        int size = 0 ;
-        
 
     public:
 	    Card* head;
+        int size = 0;
         CardList(){
             /*
              WRITE YOUR CODE HERE
@@ -23,13 +21,23 @@ class CardList{
             /*
             WRITE YOUR CODE HERE
             */
-            size--;
-            if (size !=0){
-                Card *curr = head;
-                while(curr->next != NULL){
-                    curr = curr->next;
+            Card *curr;
+            Card *pre = head;
+
+            if (size == 1){
+                size--;
+                curr = pre->next;
+                pre->next = NULL;
+                delete curr;
+                curr = NULL;
+                
+            } else if(size > 1){
+                size--;
+                while(pre->next->next != NULL){
+                    pre = pre->next;
                 }
-                //curr = NULL;
+                curr = pre->next;
+                pre->next = NULL; 
                 delete curr;
                 curr = NULL;
             }
@@ -42,7 +50,7 @@ class CardList{
             WRITE YOUR CODE HERE
             */
             
-            size +=1;
+            size++;
             Card *newcard = new Card;
             newcard -> name = newItem;
             //cout<<"insert\n";
@@ -63,8 +71,27 @@ class CardList{
             /*
             WRITE YOUR CODE HERE
             */
-            pos = pos % size-1;
-            if (pos >= 1 && pos <= size-1){
+            Card *curr;
+            Card *pre = head;
+            Card *first = head->next;
+            Card *Last = head;
+            pos = pos % (size-1);
+            if (pos >= 1){
+                //find last node
+                while (Last != NULL){
+                    Last = Last->next;
+                }
+                
+                for (int i = 0; i < pos-1; i++){
+                    pre = pre->next;
+                }
+                while (pre->next != NULL){
+                    pre = pre->next;
+                }
+                curr = pre->next;
+                head->next = curr;
+                pre->next = NULL;
+                Last->next = first;
 
             }
             cout<<"shuffle\n";
@@ -82,4 +109,5 @@ class CardList{
             }
             cout << "]\n";
         }
+        
 };
