@@ -7,5 +7,4 @@ package main
 
 func powerOfTwo(x uint64) bool {
 	return x-(x&(x-1)) == x
-
 }
