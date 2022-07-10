@@ -25,7 +25,6 @@ func main() {
 			break
 		}
 
-
 		if strings.Contains(line, ".") {
 			fmt.Println(ipv4Encode(line))
 		} else {
