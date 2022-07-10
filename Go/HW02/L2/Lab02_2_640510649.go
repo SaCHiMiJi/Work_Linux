@@ -25,14 +25,6 @@ func addition(n1, n2 string, base int) string {
 	carry := 0
 
 	i, j, k := len1-1, len2-1, MAX-1
-	// if i > 70 || j > 70 {
-	// 	// decPointPos1 := strings.Index(n1, ".")
-	// 	// decPointPos2 := strings.Index(n2, ".")
-	// 	// println("1:",decPointPos1,"2",decPointPos2)
-	// 	i = 70
-	// 	j = 70
-	// }
-	// println("i:", i, "j", j, "k", k)
 
 	for ; i >= 0 || j >= 0; i, j, k = i-1, j-1, k-1 {
 		temp := carry
