@@ -13,44 +13,58 @@ import (
 
 func roundToEven(x string, bPlace uint8) string {
 	result := ""
-	str_int := strings.Split(x, ".")[0]
-	str_float := strings.Split(x, ".")[1]
+	
+	if strings.Index(x,".") >= 0 {
 
-	if bPlace == 0 {
-		result = strings.Split(x, ".")[0]
-	} else {
+		str_int := strings.Split(x, ".")[0]
+		str_float := strings.Split(x, ".")[1]
 
-		arr_str_float := strings.Split(str_float, "")
-		len_str := len(str_float)
-		println("arr_str_float:", strings.Join(arr_str_float, ", "))
-		println("len_str:", len_str)
-
-		if len_str < int(bPlace) {
-			str_float = add_zero(str_float, int(bPlace)-len_str)
-			result = str_int + "." + str_float
+		if bPlace == 0 {
+			result = strings.Split(x, ".")[0]
 		} else {
-			str := ""
-			for i := 0; i < int(bPlace); i++ {
-				str += arr_str_float[i]
-			}
-			str_float = str
-			num := math.Pow(10, -1*float64(bPlace))
-			str_num := fmt.Sprintf("%v", num)
 
-			println("str_num:", str_num)
-			result = addition(str_int+"."+str_float, str_num, 2)
+			arr_str_float := strings.Split(str_float, "")
+			len_str := len(str_float)
+			// println("arr_str_float:", strings.Join(arr_str_float, ", "))
+			// println("len_str:", len_str)
 
-			str_check := strings.Split(strings.Split(result, ".")[1], "")
-			println("str_check:", strings.Join(str_check, ", "))
+			if len_str < int(bPlace) {
 
-			if check_binary(str_check, int(bPlace)) == false {
+				str_float = add_zero(str_float, int(bPlace)-len_str)
 				result = str_int + "." + str_float
+			} else {
+
+				str := ""
+				for i := 0; i < int(bPlace); i++ {
+					str += arr_str_float[i]
+				}
+				str_float = str
+				num := math.Pow(10, -1*float64(bPlace))
+				str_num := fmt.Sprintf("%v", num)
+
+				// println("str_num:", str_num)
+				result = addition(str_int+"."+str_float, str_num, 2)
+
+				str_check := strings.Split(strings.Split(result, ".")[1], "")
+				// println("str_check:", strings.Join(str_check, ", "))
+
+				if check_binary(str_check, int(bPlace)) == false {
+					result = str_int + "." + str_float
+				}
+				// println("plus_num:", result)
+
 			}
-			println("plus_num:", result)
-
 		}
-
+	} else {
+		if  bPlace != 0{
+			str_float := add_zero("", int(bPlace))
+			result = x + "." + str_float
+		} else {
+			result = x
+		}
+		
 	}
+	
 	return result
 }
 
@@ -59,31 +73,36 @@ func check_binary(str []string, num int) bool {
 	remain := 0
 	b_fraction := 0
 	l := len(str)
-	for i := len(str) - 1; i >= 1; i-- { // bug this loop
+	for i := len(str) - 1; i >= 0; i-- { // bug this loop
 		if str[i] != "0" {
-			println(str[i])
+			// println(str[i])
+			// println("l:",l)
 			if b_fraction == 0 {
 				b_fraction = int(math.Pow(2, float64(l)))
 				remain += 1
 			} else {
-				remain += b_fraction / int(math.Pow(2, float64(l)))
+				// println("pow:",int(math.Pow(2, float64(l))))
+				// println("mod:",b_fraction / int(math.Pow(2, float64(l))))
+				remain += int(b_fraction / int(math.Pow(2, float64(l))))
 			}
+			// println("remain:", remain)
 		}
+		l--
 	}
-	println("b_fraction:", b_fraction)
-	println("remain:", remain)
+	// println("b_fraction:", b_fraction)
+	// println("remain:", remain)
 	if b_fraction == 0 || remain == 0 {
 		return true
 	}
 
 	check := b_fraction % remain
-	println("b_fraction%remain:", check)
+	// println("b_fraction%remain:", check)
 
 	if check == 0 {
-		println(true)
+		// println(true)
 		return true
 	} else {
-		println(false)
+		// println(false)
 		return false
 	}
 
