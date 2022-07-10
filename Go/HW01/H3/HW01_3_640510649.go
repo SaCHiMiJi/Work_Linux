@@ -5,48 +5,70 @@
 package main
 
 import (
-	// "fmt"
+	"fmt"
 	"math"
 	"strconv"
 	"strings"
+    "log"
 )
 
+func main() {
+
+	var n1, n2 string
+	var bitLen uint8
+
+	_, err := fmt.Scan(&n1, &n2, &bitLen)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(addNSubtract(n1, n2, bitLen))
+
+}
+
 func addNSubtract(n1, n2 string, bitLen uint8) (int64, int64) {
-	num := len(n1)
-	if len(n2) > len(n1) {
-		num = len(n2)
-	}
-	if len(n1) != len(n2) {
-		n1 = add_valve(n1, uint8(num), true)
-		n2 = add_valve(n2, uint8(num), false)
-	}
+	num := 0//len(n1)
+	//if len(n2) > len(n1) {
+	num = int(bitLen)//len(n2)
+	//}
+	
+	n1 = add_valve(n1, uint8(num), true)
+	n2 = add_valve(n2, uint8(num), true)
+	
 
 	return Plus_binary(n1, n2, bitLen), Plus_binary(n1, additiveInverse(n2), bitLen)
 }
 
+
 // need to plus befor and cut after
 func Plus_binary(n1, n2 string, bitLen uint8) int64 {
-	println("n1 :", n1)
-	println("n2 :", n2)
+//	println("n1 :", n1)
+//	println("n2 :", n2)
 	len1 := len(n1)
 	len2 := len(n2)
-
+	//if int(bitLen)>len1{
+		
+	//} else {
+	//}
 
 	result := []byte(strings.Repeat("x", int(bitLen)))
 
 	i, j, k := len1-1, len2-1, int(bitLen)-1
 
-	println("i:", i, "j", j, "k", k)
+	//println("i:", i, "j", j, "k", k)
 	// loop from right most position
 	for ; i >= 0; i, j, k = i-1, j-1, k-1 {
 		// current digit
 		currDigit := 0
 
 		currDigit += int(n1[i]) - int('0')
-
+	if j>=0{
 		currDigit += int(n2[j]) - int('0')
-
-		println("k :", k)
+	} else {
+		currDigit += int('0') - int('0')
+	}
+	//	println("k :", k)
 		if k >= 0 {
 			if string(result[k]) == "x" {
 				result[k] = byte(int(currDigit)%2 + int('0'))
@@ -55,32 +77,32 @@ func Plus_binary(n1, n2 string, bitLen uint8) int64 {
 				result[k] = byte(int(currDigit)%2 + int('0'))
 
 			}
-			println("currDigit :", currDigit)
-			println("plus end :", string(result[k]))
+	//		println("currDigit :", currDigit)
+	//		println("plus end :", string(result[k]))
 			if k > 0 {
 				if currDigit > 1 {
 					result[k-1] = byte(currDigit/2 + int('0'))
-					println("set next digit :", string(result[k-1]))
-					
+	//				println("set next digit :", string(result[k-1]))
+					//k--
 				}
 				if string(result[k-1]) == "x" {
-					println("result k-1:", string(result[k-1]))
-					k++
+	//				println("result k-1:", string(result[k-1]))
+					//k++
 				}
 			}
 		} else {
 			k++
 		}
 	}
-	println("result all :", string(result[0:]))
-	println("result out:", string(result[k+1:]))
-	println("num out : ", k, "\n=======================\n")
+	//println("result all :", string(result[0:]))
+	//println("result out:", string(result[k+1:]))
+	//println("num out : ", k+1, "\n=======================\n")
 
 	return twosComplToInt(string(result[k+1:]))
 }
 
 //1111
-//1000
+//100 
 //12
 
 //output
@@ -175,7 +197,7 @@ func check_zero(str []string) bool {
 func add_valve(str string, bitLen uint8, x bool) string {
 	arr_str := strings.Split(str, "")
 	var num string
-	if arr_str[0] == "0" || x {
+	if arr_str[0] == "0"  {
 		num = "0"
 	} else {
 		num = "1"
