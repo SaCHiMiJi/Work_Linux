@@ -6,104 +6,124 @@
 package main
 
 import (
-	"fmt"
 	"math"
 	"strings"
 )
-
+// boom
+// 10.1
+// 0
 func roundToEven(x string, bPlace uint8) string {
 	result := ""
-	
-	if strings.Index(x,".") >= 0 {
+	str_int := strings.Split(x, ".")[0]
+	str_float := strings.Split(x, ".")[1]
+	len_str_float := len(str_float)
 
-		str_int := strings.Split(x, ".")[0]
-		str_float := strings.Split(x, ".")[1]
+	if int(bPlace) == len_str_float {
+		result = x
+	} else if int(bPlace) > len_str_float {
+		result = add_zero(x, int(bPlace)-len_str_float)
+	} else {
+
+		arr_str_float := strings.Split(str_float, "")
+		// println("arr_str_float:", strings.Join(arr_str_float, ", "))
+		// println("len_str:", len_str)
 
 		if bPlace == 0 {
-			result = strings.Split(x, ".")[0]
+			arr_str_int := strings.Split(str_int, "")
+
+			if check_binary(arr_str_float, bPlace,arr_str_int[len(str_int)-1]) {
+				result = addition(str_int, "1", 2)
+			} else if arr_str_float[0] == "1" {
+				if arr_str_int[len(str_int)-1] == "0" {
+					result = str_int
+				} else {
+					result = addition(str_int, "1", 2)
+				}
+			} else {
+				result = str_int
+			}
+
 		} else {
-
-			arr_str_float := strings.Split(str_float, "")
-			len_str := len(str_float)
-			// println("arr_str_float:", strings.Join(arr_str_float, ", "))
-			// println("len_str:", len_str)
-
-			if len_str < int(bPlace) {
-
-				str_float = add_zero(str_float, int(bPlace)-len_str)
+			str_float = ""
+			for i := 0; i < int(bPlace); i++ {
+				str_float += arr_str_float[i]
+			}
+			if arr_str_float[int(bPlace)] == "0" {
 				result = str_int + "." + str_float
 			} else {
-
-				str := ""
-				for i := 0; i < int(bPlace); i++ {
-					str += arr_str_float[i]
-				}
-				str_float = str
-				num := math.Pow(10, -1*float64(bPlace))
-				str_num := fmt.Sprintf("%v", num)
-
-				// println("str_num:", str_num)
-				result = addition(str_int+"."+str_float, str_num, 2)
-
-				str_check := strings.Split(strings.Split(result, ".")[1], "")
-				// println("str_check:", strings.Join(str_check, ", "))
-
-				if check_binary(str_check, int(bPlace)) == false {
+				if check_binary(arr_str_float, bPlace,"") {
+					str_plus := new_str_plus(int(bPlace))
+					result = str_int + "." + str_float
+					// println("result:", result)
+					// println("str_plus:", str_plus)
+					result = addition(result, str_plus, 2)
+				} else {
 					result = str_int + "." + str_float
 				}
-				// println("plus_num:", result)
-
 			}
 		}
-	} else {
-		if  bPlace != 0{
-			str_float := add_zero("", int(bPlace))
-			result = x + "." + str_float
-		} else {
-			result = x
-		}
-		
 	}
-	
+
 	return result
 }
 
-func check_binary(str []string, num int) bool {
+// 1.011111111111
+// 7
+func new_str_plus(num int) string {
+	result := "0."
+	for i := 0; i < num; i++ {
+
+		if i == num-1 {
+			result += "1"
+		} else {
+			result += "0"
+		}
+	}
+	return result
+}
+func check_binary(str []string, bPlace uint8, int_str string) bool {
 
 	remain := 0
-	b_fraction := 0
-	l := len(str)
-	for i := len(str) - 1; i >= 0; i-- { // bug this loop
-		if str[i] != "0" {
-			// println(str[i])
-			// println("l:",l)
-			if b_fraction == 0 {
-				b_fraction = int(math.Pow(2, float64(l)))
-				remain += 1
-			} else {
-				// println("pow:",int(math.Pow(2, float64(l))))
-				// println("mod:",b_fraction / int(math.Pow(2, float64(l))))
-				remain += int(b_fraction / int(math.Pow(2, float64(l))))
+	pow := len(str) - int(bPlace)
+	b_f := 0
+	// println("bPlace:",bPlace)
+	// println("len_str:",len(str))
+	for i := len(str) - 1; i >= int(bPlace); i-- {
+		// println("i:",i)
+		if b_f == 0 {
+			b_f = int(math.Pow(2, float64(pow)))
+			remain += 1
+		} else {
+			if str[i] != "0" {
+				remain += b_f / int(math.Pow(2, float64(pow)))
+
 			}
-			// println("remain:", remain)
 		}
-		l--
+		pow--
 	}
-	// println("b_fraction:", b_fraction)
 	// println("remain:", remain)
-	if b_fraction == 0 || remain == 0 {
-		return true
-	}
+	// println("b_f:", b_f)
+	println("remain/b_f:",float32(remain/b_f))
 
-	check := b_fraction % remain
-	// println("b_fraction%remain:", check)
-
-	if check == 0 {
-		// println(true)
-		return true
+	if b_f/remain == 2 {
+		// println("str b4:",str[int(bPlace)-1])
+		if int_str == "" {
+			if str[int(bPlace)-1] == "0" {
+				return false
+			} else {
+				return true
+			}
+		} else {
+			if int_str == "0" {
+				return false
+			} else {
+				return true
+			}
+		}
+		
+		
 	} else {
-		// println(false)
-		return false
+		return true
 	}
 
 }
