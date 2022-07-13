@@ -6,8 +6,8 @@
 package main
 
 import (
-	"strings"
 	"math"
+	"strings"
 	// "fmt"
 )
 
@@ -15,21 +15,21 @@ const fracLen = 7
 const expLen = 8
 
 const BASE uint8 = 2
-const DEBUG = false
+const DEBUG = true
 
 // from Lab01_2
 const MAX_INT = 64
 const DEC_PLACE = 128
 
-
 func float16bitNormed(n float32) string {
 	// expLen = 8, fracLen = 7
-	var bias = int(pow(2,expLen-1) - 1) // bias = 127
+	var bias = int(pow(2, expLen-1) - 1) // bias = 127
 
-	if DEBUG {println("Bias", bias)}
-	var minNorm float64 = 0.0000001			// dummy value
-	var maxNorm float64 = 5000000000000		// dummy value
-
+	if DEBUG {
+		println("Bias", bias)
+	}
+	var minNorm float64 = pow(2, -128)  // dummy value
+	var maxNorm float64 = pow(2, 128) // dummy value
 
 	sign := "0"
 	if n < 0 {
@@ -38,36 +38,25 @@ func float16bitNormed(n float32) string {
 	}
 
 	if (float64(n) > maxNorm) || (float64(n) < minNorm) {
-		if DEBUG {println(n, "overflow")}
+		if DEBUG {
+			println(n, "overflow")
+		}
 		return ""
+	} else {
+		if DEBUG {
+			println("in condition")
+		}
+
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	return sign + ""
 }
 
-
-func pow(x, y int) float64{
+func pow(x, y int) float64 {
 	return math.Pow(float64(x), float64(y))
 }
-//------------------------------------ Lab01_2
 
+//------------------------------------ Lab01_2
 
 func floatToBaseB(x float64, b uint8) string {
 	sign := ""
@@ -130,5 +119,3 @@ func posIntToBaseB(x int64, b uint8) string {
 
 	return string(result[k+1:])
 }
-
-
