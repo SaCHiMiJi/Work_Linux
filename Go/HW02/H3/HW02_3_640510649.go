@@ -6,9 +6,9 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"strings"
-	// "fmt"
 )
 
 const fracLen = 7
@@ -23,13 +23,14 @@ const DEC_PLACE = 128
 
 func float16bitNormed(n float32) string {
 	// expLen = 8, fracLen = 7
+
 	var bias = int(pow(2, expLen-1) - 1) // bias = 127
 
 	if DEBUG {
 		println("Bias", bias)
 	}
-	var minNorm float64 = pow(2, -128)  // dummy value
-	var maxNorm float64 = pow(2, 128) // dummy value
+	var minNorm float64 = pow(2, -126)      // dummy value
+	var maxNorm float64 = 255 * pow(2, 120) // dummy value
 
 	sign := "0"
 	if n < 0 {
@@ -43,13 +44,51 @@ func float16bitNormed(n float32) string {
 		}
 		return ""
 	} else {
-		if DEBUG {
-			println("in condition")
-		}
+		x := fmt.Sprintf("%b\n", math.Float32bits(n))
+		E := math.Log2(float64(n))
 
+		Fexp := E + float64(bias)
+
+		exp := floatToBaseB(Fexp, 2)
+		if DEBUG {
+			println("n :", fmt.Sprintf("%v", n))
+			println("in condition")
+			println("n :", n)
+			fmt.Println("x:", x)
+			fmt.Println("binary is ", x[0:8], x[8:15])
+			println("exp :",exp)
+		}
+		
+		
+		if n >= 1 {
+			return sign + x[0:8] + x[8:15]
+		} else {
+			if check_zero(x[0:8]) {
+				new := x[1:8] + x[0:1]
+				return sign + new + x[8:15]
+			} else {
+				x = "0" + x
+				return sign + x[0:8] + x[8:15]
+			}
+		}
 	}
 
-	return sign + ""
+	// return sign + ""
+}
+func check_zero(n string) bool {
+	count := 0
+	arr_n := strings.Split(n, "")
+	for i := 0; i < len(n); i++ {
+		if arr_n[i] == "0" {
+			count++
+		}
+	}
+	if arr_n[0] == "1" && count == 7 {
+		return true
+	} else {
+		return false
+	}
+
 }
 
 func pow(x, y int) float64 {
