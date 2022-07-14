@@ -9,12 +9,14 @@ class CardList
 
 public:
     Card *head;
+    Card *prev_last;
     int size = 0;
     CardList()
     {
         /*
          WRITE YOUR CODE HERE
          */
+        prev_last = NULL;
         head = NULL;
         // cout<<"Cardlist"<<endl;
     }
@@ -47,7 +49,7 @@ public:
             delete curr;
             curr = NULL;
         }
-        // cout<<"pop\n";
+        cout<<"pop\n";
     }
 
     void insert_back(string newItem)
@@ -58,23 +60,31 @@ public:
 
         size++;
         Card *newcard = new Card;
+        Card *curr = head;
         newcard->name = newItem;
-        // cout<<"insert\n";
+        cout<<"insert\nsize:"<<size<<endl;
         if (size == 1)
         {
-            // cout <<"in 1"<<endl;
+            cout <<"in 1"<<endl;
             head = newcard;
         }
-        else
+        else if(size <= 3)
         {
-            Card *curr = head;
+            cout<<"in 2"<<endl;
+            prev_last = head->next;
             while (curr->next != NULL)
             {
                 curr = curr->next;
             }
             curr->next = newcard;
+        } else {
+            curr = prev_last -> next;
+            prev_last = prev_last->next;
+            curr->next =  newcard;
         }
-        // cout << head->next->name<<" ";
+        cout<<prev_last<<endl;
+        cout<<curr<<endl;
+        cout << head->next->name<<" ";
     }
 
     void shuffle(int pos)
@@ -88,7 +98,7 @@ public:
         Card *Last = head;
         pos %= (size);
         // cout<<"pos: "<<pos<<endl;
-        if (pos >= 1)
+        if (pos > 1)
         {
             // find last node & find pre
             int i = 0;
@@ -112,7 +122,7 @@ public:
             pre->next = NULL;
             // cout<<"first :"<<first->name;
             Last->next = first;
-        }
+        } 
         // cout<<"\nshuffle\n";
     }
 

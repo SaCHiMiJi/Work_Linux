@@ -8,6 +8,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 )
 
@@ -44,32 +45,31 @@ func float16bitNormed(n float32) string {
 		}
 		return ""
 	} else {
-		x := fmt.Sprintf("%b\n", math.Float32bits(n))
-		E := math.Log2(float64(n))
-
-		Fexp := E + float64(bias)
-
-		exp := floatToBaseB(Fexp, 2)
-		if DEBUG {
-			println("n :", fmt.Sprintf("%v", n))
-			println("in condition")
-			println("n :", n)
-			fmt.Println("x:", x)
-			fmt.Println("binary is ", x[0:8], x[8:15])
-			println("exp :",exp)
-		}
-		
-		
-		if n >= 1 {
-			return sign + x[0:8] + x[8:15]
-		} else {
-			if check_zero(x[0:8]) {
-				new := x[1:8] + x[0:1]
-				return sign + new + x[8:15]
-			} else {
-				x = "0" + x
-				return sign + x[0:8] + x[8:15]
+		str_n := strconv.Itoa(int(n))
+		if str_n == "0" {
+			e := math.Log2(float64(n))
+			int_exp := e + float64(bias)
+			exp := floatToBaseB(int_exp, 2)
+			rfrac := float64(n * float32((pow(2, int(e*(-1))))))
+			frac := floatToBaseB(rfrac, 2)
+			exp_dot := strings.Index(exp, ".")
+			if exp_dot < 8 {
+				exp = strings.Repeat("0", 8-exp_dot) + string(exp[:exp_dot])
+				//println("exp =",exp)
+				//println("frac =",string(frac[0]))
 			}
+
+			if string(frac[0]) == "0" {
+				point_1 := strings.Index(frac, "1")
+				frac = string(frac[point_1+1 : point_1+8])
+			} else {
+				point_1 := strings.Index(frac, ".")
+				frac = string(frac[point_1+1 : point_1+8])
+			}
+			return sign + exp + frac
+		} else {
+			outstr := fmt.Sprintf("%b\n", math.Float32bits(n))
+			return sign + outstr[0:8] + outstr[8:15]
 		}
 	}
 
