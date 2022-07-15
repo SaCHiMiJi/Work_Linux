@@ -68,7 +68,7 @@ public:
             // cout <<"in 1"<<endl;
             head = newcard;
         }
-        else if(size <= 3)
+        else 
         {
             // cout<<"in 2"<<endl;
             prev_last = head->next;
@@ -77,12 +77,8 @@ public:
                 curr = curr->next;
             }
             curr->next = newcard;
-        } else {
-            curr = prev_last -> next;
-            prev_last = curr;
-            curr->next =  newcard;
-            // cout<<"curr->next :"<<curr->next<<endl;
         }
+        
         // cout<<"prev_last:"<<prev_last<<endl;
         // cout << head->next->name<<" ";
     }
@@ -96,33 +92,63 @@ public:
         Card *pre = head;
         Card *first = head;
         Card *Last = head;
-        pos %= (size);
+
         // cout<<"pos: "<<pos<<endl;
-        if (pos >= 1)
+        // cout<<"size: "<<size<<endl;
+        if (pos >= 1 && size - 1 >= pos)
         {
             // find last node & find pre
             int i = 0;
             while (Last->next != NULL)
             {
-                Last = Last->next;
-                if (i < size - pos - 1)
+                Last = Last->next; 
+                if (size - 1 == pos)
                 {
-                    pre = pre->next;
-                    i++;
+                    if (i < size - 3)
+                    {
+                        // cout << "i :" << i << endl;
+                        pre = pre->next;
+                        i++;
+                    }
                 }
+                else if (i < pos-1)
+                {
+                    // cout << "i :" << i << endl;
+                    pre = pre->next;
+                    
+                }
+                
+                i++;
+            }
+            if (size == 2)
+            {
+                head = Last;
+                head->next = first;
+                head->next->next = NULL;
+            }
+            else if (size - 1 == pos)
+            {   
+                // cout<<"in"<<endl;
+                head = Last;
+                curr = Last;
+                curr->next = first;
+                pre->next->next = NULL;
+            }
+            else
+            {
+                curr = pre->next;
+                head = curr;
+                pre->next = NULL;
+                Last->next = first;
             }
 
             // cout<<"Last: "<<Last->name<<endl;
             // cout<<"pre: "<<pre->name<<endl;
 
-            curr = pre->next;
             // cout<<"curr name: "<<curr->name<<endl;
 
-            head = curr;
-            pre->next = NULL;
             // cout<<"first :"<<first->name;
-            Last->next = first;
-        } 
+        }
         // cout<<"\nshuffle\n";
     }
 
