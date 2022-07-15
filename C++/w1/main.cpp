@@ -9,8 +9,7 @@ int main()
   // L.pop_back();
   L.insert_back("Pokemon");
   L.printCardList();
-  L.pop_back();
-  L.printCardList();
+  
   L.insert_back("Steelix");
   L.insert_back("Dragonite");
   L.insert_back("Natu");
@@ -22,9 +21,29 @@ int main()
   L.insert_back("Xerneas");
   L.insert_back("Yveltal");
   L.printCardList();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.printCardList();
   L.shuffle(10);
   L.printCardList();
   L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.pop_back();
+  L.printCardList();
+  L.insert_back("Yveltal");
+  L.insert_back("Xerneas");
+  L.printCardList();
+  L.shuffle(11);
+  L.insert_back("Rayquaza");
+  L.printCardList();
+  L.shuffle(16);
   L.printCardList();
   Card * curr = L.head;
   while(curr!=NULL) {

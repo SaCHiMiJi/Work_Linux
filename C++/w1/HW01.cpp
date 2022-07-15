@@ -28,7 +28,7 @@ public:
         */
         Card *curr;
         Card *pre = head;
-
+        // cout<<"size : "<<size<<endl;
         if (size == 1)
         {
             size--;
@@ -49,7 +49,7 @@ public:
             delete curr;
             curr = NULL;
         }
-        cout<<"pop\n";
+        // cout<<"pop\n";
     }
 
     void insert_back(string newItem)
@@ -62,15 +62,15 @@ public:
         Card *newcard = new Card;
         Card *curr = head;
         newcard->name = newItem;
-        cout<<"insert\nsize:"<<size<<endl;
+        // cout<<"insert\nsize:"<<size<<endl;
         if (size == 1)
         {
-            cout <<"in 1"<<endl;
+            // cout <<"in 1"<<endl;
             head = newcard;
         }
         else if(size <= 3)
         {
-            cout<<"in 2"<<endl;
+            // cout<<"in 2"<<endl;
             prev_last = head->next;
             while (curr->next != NULL)
             {
@@ -79,12 +79,12 @@ public:
             curr->next = newcard;
         } else {
             curr = prev_last -> next;
-            prev_last = prev_last->next;
+            prev_last = curr;
             curr->next =  newcard;
+            // cout<<"curr->next :"<<curr->next<<endl;
         }
-        cout<<prev_last<<endl;
-        cout<<curr<<endl;
-        cout << head->next->name<<" ";
+        // cout<<"prev_last:"<<prev_last<<endl;
+        // cout << head->next->name<<" ";
     }
 
     void shuffle(int pos)
@@ -98,7 +98,7 @@ public:
         Card *Last = head;
         pos %= (size);
         // cout<<"pos: "<<pos<<endl;
-        if (pos > 1)
+        if (pos >= 1)
         {
             // find last node & find pre
             int i = 0;
