@@ -132,7 +132,23 @@ public:
                 head = Last;
                 curr = Last;
                 curr->next = first;
-                pre->next->next = NULL;
+                if (pos >= 4)
+                { 
+                    pre = pre->next;
+                    for ( i = 0; i < pos-4; i++);
+                    {
+                        // cout<<i<<endl;
+                        pre = pre->next;
+                    }
+                    pre->next = NULL;
+                    
+                }
+                else
+                {
+                    pre->next->next = NULL;
+                }
+                // pre->next->next = NULL;
+
             }
             else
             {
