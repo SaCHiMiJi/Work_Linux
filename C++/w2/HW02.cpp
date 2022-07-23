@@ -9,11 +9,15 @@ public:
 
     Station* header;
     Station* trailer;
+    int size;
     Trip()
     {
          /*
          WRITE YOUR CODE HERE
          */   
+          header = NULL;
+          trailer = NULL;
+          size = 0;
     }
 
     void printList()
@@ -33,12 +37,40 @@ public:
          /*
          WRITE YOUR CODE HERE
          */
+        Station *ptr; 
+        if (size == 0)
+        {
+          
+          header = ptr;
+          ptr->next = trailer;
+          trailer->prev = ptr;
+
+        } 
+        else
+        {
+          Station *curr; 
+          curr = header->next;
+        }
+     
     }
     void insert_back(string newItem)
     {
          /*
          WRITE YOUR CODE HERE
          */
+        if (size == 0)
+        {
+          
+          header = ptr;
+          ptr->next = trailer;
+          trailer->prev = ptr;
+
+        } 
+        else
+        {
+          Station *curr; 
+          curr = trailer->next;
+        }
     }
 
     void remove_front()
@@ -59,5 +91,6 @@ public:
          /*
          WRITE YOUR CODE HERE
          */
+        
     }
 };
