@@ -1,9 +1,10 @@
 #include <string>
 using namespace std;
 
-class Station {
+class Station
+{
 public:
 	string name;
-	Station* prev;
-	Station* next;
+	Station *prev;
+	Station *next;
 };

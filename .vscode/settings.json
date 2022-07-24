@@ -8,6 +8,7 @@
         "typeinfo": "cpp",
         "ostream": "cpp",
         "iostream": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "sstream": "cpp"
     }
 }
