@@ -21,7 +21,7 @@ public:
          */
         if (size == 0)
         {
-            cout << "in 0\n";
+            // cout << "in 0\n";
             Poly_node *p = new Poly_node;
             p->coef = coef;
             p->exponent = exponent;
@@ -36,7 +36,7 @@ public:
 
             p->coef = coef;
             p->exponent = exponent;
-            cout << "coef :" << p->coef << "\nexponent :" << p->exponent << endl;
+            // cout << "coef :" << p->coef << "\nexponent :" << p->exponent << endl;
             if (size == 1)
             {
                 bf_p = head;
@@ -128,11 +128,107 @@ public:
         /*
          WRITE YOUR CODE HERE
          */
+        cout << "size : " << f2.size << endl;
+        for (int i = 0; i < f2.size; i++)
+        {
+            cout << "i : " << i << endl;
+            Poly_node *p_f2 = f2.head;
+            Poly_node *p = head;
+            Poly_node *bf_p = head;
+            while (bf_p->next != NULL)
+            {
+                cout << "in while loop" << endl;
+                if (p != head)
+                {
+                    p = bf_p->next;
+                }
+                cout << "p_f2->exponent : " << p_f2->exponent << endl;
+                if (p->exponent == p_f2->exponent) // when exponent is equal
+                {
+
+                    p->coef += p_f2->coef;
+                    if (p->coef == 0) // when coef is zero
+                    {
+                        cout << "in plus" << endl;
+                        bf_p->next = p->next;
+                        delete p;
+                        size--;
+                        break;
+                    }
+                }
+                else if (p->exponent > p_f2->exponent) // when this exponent haven't in f1
+                {
+
+                    Poly_node *p_next = p->next;
+                    if (p_f2->exponent < p_next->exponent)
+                    {
+                        cout << "add new coef" << endl;
+                        p->next = p_f2;
+                        p_f2->next = p_next;
+                        break;
+                    }
+                }
+                bf_p = bf_p->next;
+            }
+            p_f2 = p_f2->next;
+        }
     }
     void minus(Polynomial f2)
     {
         /*
          WRITE YOUR CODE HERE
          */
+        cout << "size : " << f2.size << endl;
+        Poly_node *p_f2 = f2.head;
+        cout << "head coef: " << f2.head->coef << endl;
+        for (int i = 0; i < f2.size; i++)
+        {
+            cout << "i : " << i << endl;
+            cout << "f2 coef: " << f2.head->coef << endl;
+            Poly_node *p = head;
+            Poly_node *bf_p = head;
+            while (bf_p->next != NULL)
+            {
+                cout << "in while loop" << endl;
+                if (p != head)
+                {
+                    p = bf_p->next;
+                }
+                cout << "p_f2->exponent : " << p_f2->exponent << endl;
+                if (p->exponent == p_f2->exponent) // when exponent is equal
+                {
+
+                    p->coef -= p_f2->coef;
+                    if (p->coef == 0) // when coef is zero
+                    {
+                        cout << "in minus" << endl;
+                        bf_p->next = p->next;
+                        delete p;
+                        size--;
+                        break;
+                    }
+                }
+                else if (p->exponent > p_f2->exponent) // when this exponent haven't in f1
+                {
+
+                    Poly_node *p_next = p->next;
+                    if (p_f2->exponent > p_next->exponent)
+                    {
+                        if (p == head)
+                        {
+                            p_next = head->next;
+                        }
+                        cout << "add new coef" << endl;
+                        p->next = p_f2;
+                        p->next->next = p_next;
+                        p = p->next;
+                        size++;
+                        break;
+                    }
+                }
+                bf_p = bf_p->next;
+            }
+            p_f2 = p_f2->next;
+        }
     }
 };

@@ -9,7 +9,8 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "type_traits": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "algorithm": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
