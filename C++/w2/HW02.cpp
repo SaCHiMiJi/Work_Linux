@@ -183,7 +183,7 @@ public:
         if (!isEmpty())
         {
 
-            Station *curr = header;
+            Station *curr = header->next;
 
             for (size_t i = 0; i < stepText.length(); i++)
             {
