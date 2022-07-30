@@ -128,47 +128,118 @@ public:
         /*
          WRITE YOUR CODE HERE
          */
-        cout << "size : " << f2.size << endl;
+        // cout << "size : " << size << endl;
+        Poly_node *p_f2 = f2.head;
+        // cout << "head coef: " << f2.head->coef << endl;
+        Poly_node *p = head;
+        int j = 0;
         for (int i = 0; i < f2.size; i++)
         {
-            cout << "i : " << i << endl;
-            Poly_node *p_f2 = f2.head;
-            Poly_node *p = head;
-            Poly_node *bf_p = head;
-            while (bf_p->next != NULL)
+            // cout << "\n=========== i : " << i << " ===========" << endl;
+            // cout << "P_f2 coef : " << p_f2->coef << endl;
+            // cout << "P_f2 exponent : " << p_f2->exponent << endl;
+
+            // Poly_node *p = head;
+            while (p != NULL)
             {
-                cout << "in while loop" << endl;
-                if (p != head)
-                {
-                    p = bf_p->next;
-                }
-                cout << "p_f2->exponent : " << p_f2->exponent << endl;
-                if (p->exponent == p_f2->exponent) // when exponent is equal
-                {
+                // cout << "\nj : " << j << endl;
+                // cout << "size : " << size << endl;
+                // cout << "p_f2 exponent: " << p_f2->exponent << endl;
+                // cout << "p exponent: " << p->exponent << endl;
 
+                if (p_f2->exponent > p->exponent)
+                {
+                    Poly_node *add_node = new Poly_node;
+                    add_node->exponent = p_f2->exponent;
+                    add_node->coef = p_f2->coef;
+                    // cout << "\nadd first node" << endl;
+                    if (size == 2)
+                    {
+                        p = head;
+                        Poly_node *p_next = p->next;
+                        // cout << "size : " << size << endl;
+                        // cout << "p next : " << p_next->exponent << endl;
+                        // cout << "p coef: " << p->coef << endl;
+                        // cout << "p exponent: " << p->exponent << endl;
+                        
+                        if (p_f2->exponent > p_next->exponent)
+                        {
+                            // cout << "add 1" << endl;
+                            head->next = add_node;
+                            add_node->next = p_next;
+                            size++;
+                            break;
+                        }
+                    }
+                    else if (size > 2)
+                    {
+                        Poly_node *p_next = p->next;
+                        // cout << "size : " << size << endl;
+                        // cout << "p next : " << p_next->exponent << endl;
+                        // cout << "p coef: " << p->coef << endl;
+                        // cout << "p exponent: " << p->exponent << endl;
+                        
+                        if (p_f2->exponent > p_next->exponent)
+                        {
+                            // cout << "add 1" << endl;
+                            head->next = add_node;
+                            add_node->next = p_next;
+                            size++;
+                            break;
+                        }
+                    }
+                    
+                    else if (p == head)
+                    {
+                        // cout << "add head" << endl;
+                        head = add_node;
+                        add_node->next = p;
+                        size++;
+                        break;
+                    }
+                }
+                else if (p_f2->exponent == p->exponent) // exponent is equl
+                {
+                    // cout << "in plus" << endl;
                     p->coef += p_f2->coef;
-                    if (p->coef == 0) // when coef is zero
-                    {
-                        cout << "in plus" << endl;
-                        bf_p->next = p->next;
-                        delete p;
-                        size--;
-                        break;
-                    }
+                    break;
                 }
-                else if (p->exponent > p_f2->exponent) // when this exponent haven't in f1
+                else if (p_f2->exponent < p->exponent && p->next != NULL)
                 {
-
+                    // cout << "in add_node" << endl;
                     Poly_node *p_next = p->next;
-                    if (p_f2->exponent < p_next->exponent)
+                    Poly_node *add_node = new Poly_node;
+
+                    add_node->exponent = p_f2->exponent;
+                    add_node->coef = p_f2->coef;
+                    // cout<<"add_node : \n"<<add_node->coef<<endl<<add_node->exponent<<endl;
+
+                    if (p_f2->exponent > p_next->exponent)
                     {
-                        cout << "add new coef" << endl;
-                        p->next = p_f2;
-                        p_f2->next = p_next;
+                        // cout << "add 1" << endl;
+                        p->next = add_node;
+                        add_node->next = p_next;
+                        size++;
                         break;
                     }
                 }
-                bf_p = bf_p->next;
+                else if (p->next == NULL && size == j + 1)
+                {
+                    // cout << "add last node" << endl;
+                    Poly_node *add_node = new Poly_node;
+
+                    add_node->exponent = p_f2->exponent;
+                    add_node->coef = p_f2->coef;
+
+                    // cout << "add 2" << endl;
+                    p->next = add_node;
+                    add_node->next = NULL;
+                    size++;
+                    break;
+                }
+
+                p = p->next;
+                j++;
             }
             p_f2 = p_f2->next;
         }
@@ -178,55 +249,119 @@ public:
         /*
          WRITE YOUR CODE HERE
          */
-        cout << "size : " << f2.size << endl;
+        // cout << "size : " << size << endl;
         Poly_node *p_f2 = f2.head;
-        cout << "head coef: " << f2.head->coef << endl;
+        // cout << "head coef: " << f2.head->coef << endl;
+        Poly_node *p = head;
+        int j = 0;
         for (int i = 0; i < f2.size; i++)
         {
-            cout << "i : " << i << endl;
-            cout << "f2 coef: " << f2.head->coef << endl;
-            Poly_node *p = head;
-            Poly_node *bf_p = head;
-            while (bf_p->next != NULL)
+            // cout << "\n=========== i : " << i << " ===========" << endl;
+            // cout << "P_f2 coef : " << p_f2->coef << endl;
+            // cout << "P_f2 exponent : " << p_f2->exponent << endl;
+
+            // Poly_node *p = head;
+            while (p != NULL)
             {
-                cout << "in while loop" << endl;
-                if (p != head)
-                {
-                    p = bf_p->next;
-                }
-                cout << "p_f2->exponent : " << p_f2->exponent << endl;
-                if (p->exponent == p_f2->exponent) // when exponent is equal
-                {
 
-                    p->coef -= p_f2->coef;
-                    if (p->coef == 0) // when coef is zero
-                    {
-                        cout << "in minus" << endl;
-                        bf_p->next = p->next;
-                        delete p;
-                        size--;
-                        break;
-                    }
-                }
-                else if (p->exponent > p_f2->exponent) // when this exponent haven't in f1
-                {
+                // cout << "\nsize : " << size << endl;
+                // cout << "j : " << j << endl;
 
-                    Poly_node *p_next = p->next;
-                    if (p_f2->exponent > p_next->exponent)
+                // cout << "p_f2 exponent: " << p_f2->exponent << endl;
+                // cout << "p exponent: " << p->exponent << endl;
+                if (p_f2->exponent > p->exponent)
+                {
+                    Poly_node *add_node = new Poly_node;
+                    add_node->exponent = p_f2->exponent;
+                    add_node->coef = p_f2->coef;
+                    // cout << "\nadd first node" << endl;
+                    if (size == 2)
                     {
-                        if (p == head)
+                        p = head;
+                        Poly_node *p_next = p->next;
+                        // cout << "size : " << size << endl;
+                        // cout << "p next : " << p_next->exponent << endl;
+                        // cout << "p coef: " << p->coef << endl;
+                        // cout << "p exponent: " << p->exponent << endl;
+                        
+                        if (p_f2->exponent > p_next->exponent)
                         {
-                            p_next = head->next;
+                            // cout << "add 1" << endl;
+                            head->next = add_node;
+                            add_node->next = p_next;
+                            size++;
+                            break;
                         }
-                        cout << "add new coef" << endl;
-                        p->next = p_f2;
-                        p->next->next = p_next;
-                        p = p->next;
+                    }
+                    else if (size > 2)
+                    {
+                        Poly_node *p_next = p->next;
+                        // cout << "size : " << size << endl;
+                        // cout << "p next : " << p_next->exponent << endl;
+                        // cout << "p coef: " << p->coef << endl;
+                        // cout << "p exponent: " << p->exponent << endl;
+                        
+                        if (p_f2->exponent > p_next->exponent)
+                        {
+                            // cout << "add 1" << endl;
+                            head->next = add_node;
+                            add_node->next = p_next;
+                            size++;
+                            break;
+                        }
+                    }
+                    
+                    else if (p == head)
+                    {
+                        // cout << "add head" << endl;
+                        head = add_node;
+                        add_node->next = p;
                         size++;
                         break;
                     }
                 }
-                bf_p = bf_p->next;
+                else if (p_f2->exponent == p->exponent) // exponent is equl
+                {
+                    // cout << "in Minus" << endl;
+                    p->coef -= p_f2->coef;
+                    break;
+                }
+                else if (p_f2->exponent < p->exponent && p->next != NULL)
+                {
+                    // cout << "in add_node" << endl;
+                    Poly_node *p_next = p->next;
+                    Poly_node *add_node = new Poly_node;
+
+                    add_node->exponent = p_f2->exponent;
+                    add_node->coef = -1 * p_f2->coef;
+                    // cout<<"add_node : \n"<<add_node->coef<<endl<<add_node->exponent<<endl;
+
+                    if (p_f2->exponent > p_next->exponent)
+                    {
+                        // cout << "add 1" << endl;
+                        p->next = add_node;
+                        add_node->next = p_next;
+                        size++;
+                        break;
+                    }
+                }
+                else if (p->next == NULL && size == j + 1)
+                {
+                    // cout<<"add last node"<<endl;
+                    Poly_node *add_node = new Poly_node;
+
+                    add_node->exponent = p_f2->exponent;
+                    add_node->coef = -1 * p_f2->coef;
+
+                    // cout << "add 2" << endl;
+                    p->next = add_node;
+                    add_node->next = NULL;
+                    size++;
+                    break;
+                }
+
+                p = p->next;
+                j++;
             }
             p_f2 = p_f2->next;
         }

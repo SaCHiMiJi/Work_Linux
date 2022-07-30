@@ -1,17 +1,20 @@
+
+
+import math
+
+
 def main():
     # print("in 1")
-    num1,num2,num3 = int(input("1:")),int(input("2:")),int(input("3:"))
-    str = "1"+"2"
-    print("str = ",str)
-    
-    print("a = {0},b = {1},c = {2}\na+b+c = {3}, {4}".format(num1,num2,num3,float(num1+num2+num3),str))
-    
-    
-def test():
-    # print("in 2")
-    a = 2
-    b = 3
-    c = 4
-    return a,b,c
+    a = int(input())
+    b = int(input())
+    print(base_b(a, b))
 
-main()
+
+def base_b(x, b,i=0):
+    a = int((x%b)*10**i)
+    if x//b == 0:
+        return a
+    return base_b(x//b,b,i+1)+a
+
+if __name__ == '__main__':
+    main()
