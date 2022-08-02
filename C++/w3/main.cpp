@@ -9,7 +9,8 @@ int main()
     // f1.addTerm(5,8);
     // f1.addTerm(4,5);
     // f1.addTerm(4,3);
-    f1.addTerm(12,1);
+    f1.addTerm(12,12);
+    f1.addTerm(-4,5);
     // f1.addTerm(-5,0);
     f1.printPolynomial();
     f2.addTerm(4,5);
