@@ -18,7 +18,7 @@ public:
          */
         prev_last = NULL;
         head = NULL;
-        // cout<<"Cardlist"<<endl;
+        cout<<"Cardlist"<<head<<endl;
     }
 
     void pop_back()

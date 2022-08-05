@@ -14,12 +14,10 @@ int main()
   L.insert_back("Suicune");
   L.printCardList();
   L.shuffle(6);
+  cout<<L.size<<endl;
   L.printCardList();
   // L.shuffle(3);
   // L.printCardList();
-  
-  // 
-  // 
   // L.insert_back("Lugia");
   // L.pop_back();
   // L.insert_back("Rayquaza");
