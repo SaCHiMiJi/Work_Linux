@@ -24,7 +24,7 @@ def median_of_median(list_a:list, i:int=0, list_b:list = [])->float:
         return median_of_median(list_a, i+3, list_b)
 
 def main():
-    list_a = [28, 14,  13,  21,  19,  27,  23,  30,  16,  31]
+    list_a = [28, 14,  13,  21,  19,  27,  23,  30,  16,  31, 1]
     print(median_of_median(list_a))
 
 
