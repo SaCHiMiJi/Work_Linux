@@ -66,6 +66,7 @@ int main()
 {
     string s;
     cin >> s;
+    
     while (s != "-1")
     {
         if (isBalanced(s))
