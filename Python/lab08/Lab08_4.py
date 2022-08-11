@@ -1,6 +1,8 @@
 
 def median_of_median(list_a:list, i:int=0, list_b:list = [])->float:
-    
+    if len(list_a) == 2:
+        num_s = sum(list_a)/2
+        return num_s
     if len(list_a) == 1:
         return list_a[0]
     
