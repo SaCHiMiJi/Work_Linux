@@ -10,7 +10,8 @@ def moving_average(list_a:list, w:int, i:int=0,result:list=[])->list:
     
 def main():
     list_a = [1, 2, 3, 4, 5]
-    w = 3
+    w = 2
+    
     print(moving_average(list_a, w))
 
 
