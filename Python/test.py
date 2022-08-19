@@ -4,10 +4,10 @@ import math
 
 
 def main():
-    # print("in 1")
-    a = int(input())
-    b = int(input())
-    print(base_b(a, b))
+    list_a = [1,2,3,4]
+    list_b = [1,2,3]
+    list_a.remove(list_b)
+    print(list_a)
 
 
 def base_b(x, b,i=0):

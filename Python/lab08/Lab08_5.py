@@ -19,11 +19,12 @@ def medal_allocation(list_a: list, result: list = []) -> list:
             
             result.append([])
             result.append([])
+       
         elif num1 == 2:
             
             result.append([])
-            result.append([list_a[num1]])
-        elif num2 >= 2:
+            result.append([list_a[num1]]) 
+        elif num2 > 2:
             # print("in")
             result.append(list_a[num1:num2+num1])
             result.append([])
@@ -42,9 +43,10 @@ def medal_allocation(list_a: list, result: list = []) -> list:
                 result.append(list_a[num1+num2:num3+num2+num1])
     return tuple(result)
 
+    
 
 def main():
-    list_a = [9, 8, 7, 7, 7, 6, 5, 4, 3, 2]
+    list_a = [7, 9, 8, 7, 7, 7, 6, 10, 5, 10, 8, 4, 10, 9, 3, 2, 10, 8]
     print(medal_allocation(list_a))
 
 
