@@ -3,22 +3,18 @@ from operator import le
 
 
 def median_of_median(list_a: list) -> float:
-
     n = len(list_a) // 3
     if len(list_a) < 3:
         return mid_num(list_a)
     else:
-        list_b = []
         mid_n1 = median_of_median(list_a[0:n*(1)])
         mid_n2 = median_of_median(list_a[n:n*(2)])
         mid_n3 = median_of_median(list_a[n*2:])
-        list_b += [mid_n1]+[mid_n2]+[mid_n3]
-
+        list_b = [mid_n1]+[mid_n2]+[mid_n3]
         return mid_num(list_b)
 
 
 def mid_num(list_num: list):
-
     if len(list_num) == 2:
         num = sum(list_num)/2
         return num
