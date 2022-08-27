@@ -121,9 +121,6 @@ public:
 
                 curr = header->next;
                 n_curr = curr->next;
-
-                // cout<<"curr : "<<curr->name<<"\nn_curr : "<<n_curr->name<<endl;
-
                 n_curr->prev = header;
                 header->next = n_curr;
             }

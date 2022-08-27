@@ -1,5 +1,5 @@
 #include <iostream>
-#include "HW02.cpp"
+#include "HW02_t.cpp"
 using namespace std;
 int main()
 {
@@ -11,8 +11,8 @@ int main()
     T.insert_back("A");
     // T.insert_back("B");
     // T.insert_back("C");
-    // T.insert_front("D");
-    T.insert_front("F");
+    T.insert_front("D");
+    // T.insert_front("F");
     T.remove_back();
     T.remove_front();
     T.printList();
