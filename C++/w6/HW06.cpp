@@ -101,14 +101,10 @@ public:
                         T[j-1] = T[j];
                         T[j] = temp;
                     }
-                    else if( T[j-1].GD == T[j].GD){
-                        if (T[j-1].ID > T[j].ID)
-                        {
-                            Team temp(T[j-1].ID,T[j-1].GD,T[j-1].PTS);
-                            T[j-1] = T[j];
-                            T[j] = temp;
-                        }
-                        
+                    else if( T[j-1].GD == T[j].GD && (T[j-1].ID > T[j].ID)){
+                        Team temp(T[j-1].ID,T[j-1].GD,T[j-1].PTS);
+                        T[j-1] = T[j];
+                        T[j] = temp;
                     }
                     
                     
