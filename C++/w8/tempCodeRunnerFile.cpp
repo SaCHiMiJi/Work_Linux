@@ -1,0 +1,2 @@
+
+    tree.insert(3);

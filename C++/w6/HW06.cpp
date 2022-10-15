@@ -125,11 +125,4 @@ public:
             
     }
 
-    void merge_sort(int ){
-
-    }
-
-    void merge(){
-
-    }
 };
