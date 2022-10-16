@@ -53,7 +53,7 @@ public:
     void remove(int value)
     {
         // int i =0;
-        BSTNode *p, = root;
+        BSTNode *p = root;
         BSTNode *previous = nullptr;
 
         while (p != nullptr && p->value != value)
@@ -93,7 +93,7 @@ public:
                 root = nullptr;
             }
 
-            free(p);
+            delete(p);
         }
         // two child
         else if (p->left && p->right)
@@ -120,7 +120,7 @@ public:
             {
                 root = oneChild(p);
             }
-            free(p);
+            delete(p);
         }
     }
 
@@ -166,17 +166,13 @@ public:
         }
     }
 
-    void free(BSTNode *x)
-    {
-        // cout << "free node" << endl;
-        delete x;
-    }
+    
     bool isLeaf(BSTNode *p)
     {
         return (p->left != nullptr && p->right == nullptr);
     }
 
-    BSTNode *oneChild(BSTNode *p)
+    BSTNode* oneChild(BSTNode *p)
     {
         if (p->left != nullptr && p->right == nullptr)
         {
@@ -188,7 +184,7 @@ public:
         }
     }
 
-    BSTNode *leftMost(BSTNode *p)
+    BSTNode* leftMost(BSTNode *p)
     {
         while (p->left != nullptr)
         {
