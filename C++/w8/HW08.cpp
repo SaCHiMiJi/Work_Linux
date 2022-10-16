@@ -53,8 +53,8 @@ public:
     void remove(int value)
     {
         // int i =0;
-        BSTNode *p, *previous = new BSTNode;
-        p = root;
+        BSTNode *p, = root;
+        BSTNode *previous = nullptr;
 
         while (p != nullptr && p->value != value)
         {
@@ -69,9 +69,13 @@ public:
                 p = p->right;
             }
         }
-        if (p == nullptr){ return; } // tree empty
-
-        if (isLeaf(p)) // leaf child
+        // tree empty
+        if (p == nullptr)
+        {
+            return;
+        } 
+        // leaf child
+        if (isLeaf(p)) 
         {
             if (p != root)
             {
@@ -92,7 +96,7 @@ public:
             free(p);
         }
         // two child
-        else if (p->left != nullptr && p->right != nullptr) 
+        else if (p->left && p->right)
         {
             BSTNode *l_most = leftMost(p->right);
             int v_lmost = l_most->value;
@@ -133,7 +137,7 @@ public:
 
         p = root;
         // cout<<p->value<<endl;
-        while (p!=nullptr)
+        while (p != nullptr)
         {
             if (p->value != value)
             {
@@ -151,8 +155,6 @@ public:
             {
                 break;
             }
-            
-            
         }
         if (p != nullptr)
         {
@@ -174,7 +176,7 @@ public:
         return (p->left != nullptr && p->right == nullptr);
     }
 
-    BSTNode* oneChild(BSTNode *p)
+    BSTNode *oneChild(BSTNode *p)
     {
         if (p->left != nullptr && p->right == nullptr)
         {
@@ -185,7 +187,7 @@ public:
             return p->right;
         }
     }
-    
+
     BSTNode *leftMost(BSTNode *p)
     {
         while (p->left != nullptr)
