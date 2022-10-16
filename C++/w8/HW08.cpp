@@ -53,7 +53,7 @@ public:
 
     void remove(int value)
     {
-        int i =0;
+        // int i =0;
         string pre_point,last_move;
         BSTNode *p, *previous, *x, *y = new BSTNode;
         p = root;
@@ -65,8 +65,8 @@ public:
         while (p->value != value )
         {
             if (p == nullptr){return ;}
-            i++;
-            cout << "i : " << i << endl;
+            // i++;
+            // cout << "i : " << i << endl;
             previous = p;
             if (p->value > value)
             {
@@ -81,11 +81,12 @@ public:
             
             
         }
-        cout << (p == root) << endl;
+        
         
         // case 1 no child
         if (p->left == nullptr && p->right == nullptr)
         {
+            cout << "in case 1" << endl;
             if (pre_point == "left")
             {
                 previous->left = nullptr;
@@ -99,8 +100,11 @@ public:
         // case 2 one child
         else if ((p->left != nullptr && p->right == nullptr) || (p->left == nullptr && p->right != nullptr))
         {
+            cout << "in case 2" << endl;
+
             if (p->left != nullptr) 
             {
+                cout << "part 1" << endl;
                 if (pre_point == "left")
                 {
                     x = previous->left;
@@ -115,6 +119,7 @@ public:
             }
             else // (p->right != nullptr)
             {
+                cout << "part 2" << endl;
                 if (pre_point == "left")
                 {
                     x = previous->left;
@@ -131,16 +136,19 @@ public:
         // case 3 two child
         else
         {
-            cout << p -> value<< endl;
-            cout << "in1" << endl;
-            if (p == root){
+            // cout << p -> value<< endl;
+            // cout << "in1" << endl;
+            //case 3.0 child have on child
+            if (p == root&& p->left->right == nullptr || p->left->left == nullptr ){
+                cout << "in case 3.0" << endl;
+                
+                root->value = p->right->value;
                 root->right = nullptr;
                 root->left = p->left;
-                root->value = p->right->value;
                 // cout << p -> value<< endl;
                 // cout << root -> value<< endl;
                 // x = p;
-                cout << "in2" << endl;
+                // cout << "in2" << endl;
                 free(p);
                 
                 
@@ -150,6 +158,7 @@ public:
             //case 3.1 child have one child
             if(p->right->left != nullptr)
             {
+                cout << "in case 3.1" << endl;
                 
                 if (pre_point == "left")
                 {
@@ -166,6 +175,8 @@ public:
             }
             else if (p->right->right == nullptr)
             {
+                cout << "in case 3.1" << endl;
+
                 if (pre_point == "left")
                 {
                     x = previous->left;
@@ -183,6 +194,8 @@ public:
             //case 3.2 child have two child
             else
             {
+                cout << "in case 3.2" << endl;
+
                 BSTNode *pre_y = new BSTNode;
                 if (pre_point == "left")
                 {
@@ -212,15 +225,21 @@ public:
 
     int get_depth(int value)
     {
+        // cout<<"value : "<<value<<endl;
         int depth=0;
         BSTNode *p;
         
         if (root == NULL){
             return 0;
         }
+        
         p = root;
-        while (p->value != value  && p != nullptr)
-        {
+        // cout<<p->value<<endl;
+        while (p->value != value )
+        {   
+            if( p == nullptr){
+                break;
+            }
             if (p->value > value )
             {
                 p = p->left;
@@ -230,6 +249,7 @@ public:
                 p = p->right;
             }
             depth++;
+            
         }
         if (p != nullptr){
             return depth;
@@ -244,10 +264,11 @@ public:
 
     void free(BSTNode *x)
     {
+        cout << "free node" << endl;
+
         x->left = nullptr;
         x->right = nullptr;
         delete x;
-        cout << "in4" << endl;
 
     }
 };
