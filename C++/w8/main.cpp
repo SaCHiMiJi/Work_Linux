@@ -19,7 +19,7 @@ int main() {
     cout << tree.get_depth(5) << endl;
     cout << tree.get_depth(6) << endl;
     
-    tree.remove(5);
+    tree.remove(2);
     
     cout << tree.get_depth(1) << endl;
     cout << tree.get_depth(2) << endl;
