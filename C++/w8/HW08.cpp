@@ -91,73 +91,110 @@ public:
             return -1;
         }
     }
-    void delete_element(BSTNode *a, BSTNode *before, int value) {
-        if (a != nullptr) {
-            if (value < a->value) {
-                before = a;
-                delete_element(a->left, before, value);
-            } else if (value > a->value) {
-                before = a;
-                delete_element(a->right, before, value);
-            } else {
-                if (a->left == nullptr && a->right == nullptr) {
-                // cout << "Both empty"
-                //<< "\n";
-                if (before->value == a->value) {
-                    root = nullptr;
-            
-                } else if (before->left->value == a->value){
-                    before->left = nullptr;
-                } else {
-                    before->right = nullptr;
+    void delete_Node(BSTNode *p, BSTNode *previous, int value)
+    {
+        if (p != nullptr)
+        {
+            if (value < p->value)
+            {
+                previous = p;
+                delete_Node(p->left, previous, value);
+            }
+            else if (value > p->value)
+            {
+                previous = p;
+                delete_Node(p->right, previous, value);
+            }
+            else
+            {
+                if (p->left == nullptr && p->right == nullptr)
+                {
+                    // cout << "Both empty"
+                    //<< "\n";
+                    if (previous->value == p->value)
+                    {
+                        root = nullptr;
+                    }
+                    else if (previous->left->value == p->value)
+                    {
+                        previous->left = nullptr;
+                    }
+                    else
+                    {
+                        previous->right = nullptr;
+                    }
                 }
-                } else if (a->left == nullptr) {
-                // cout << "child on right";
-                if (before->value == a->value) {
-                    root = a->right;
-                } else if (before->left->value == a->value) {
-                    before->left = a->right;
-                    // cout <<" insert "<<before->left->value<<"\n";
-                } else {
-                    before->right = a->right;
-                    // cout <<" insert "<<before->right->value<<"\n";
+                else if (p->left == nullptr)
+                {
+                    // cout << "child on right";
+                    if (previous->value == p->value)
+                    {
+                        root = p->right;
+                    }
+                    else if (previous->left->value == p->value)
+                    {
+                        previous->left = p->right;
+                        // cout <<" insert "<<previous->left->value<<"\n";
+                    }
+                    else
+                    {
+                        previous->right = p->right;
+                        // cout <<" insert "<<previous->right->value<<"\n";
+                    }
                 }
-                } else if (a->right == nullptr) {
-                // cout << "child on left";
-                if (before->value == a->value) {
-                    root = a->left;
-                } else if (before->left->value == a->value) {
-                    before->left = a->left;
-                    // cout <<" insert "<<before->left->value<<"\n";
-                } else {
-                    before->right = a->left;
-                    // cout <<" insert "<<before->right->value<<"\n";
+                else if (p->right == nullptr)
+                {
+                    // cout << "child on left";
+                    if (previous->value == p->value)
+                    {
+                        root = p->left;
+                    }
+                    else if (previous->left->value == p->value)
+                    {
+                        previous->left = p->left;
+                        // cout <<" insert "<<previous->left->value<<"\n";
+                    }
+                    else
+                    {
+                        previous->right = p->left;
+                        // cout <<" insert "<<previous->right->value<<"\n";
+                    }
                 }
-                } else {
-                // cout << "Both child"<<"\n";
-                BSTNode *Curr = new BSTNode;
-                Curr = MinNode(a->right);
-                // cout << "minnode = "<<Curr->value<<"\n";
-                int num = Curr->value;
-                delete_element(root, root, Curr->value);
-                if (before->value == a->value) {
-                    before->value = num;
-                } else if (before->left->value == a->value) {
-                    before->left->value = num;
-                } else {
-                    before->right->value = num;
-                }
+                else
+                {
+                    // cout << "Both child"<<"\n";
+                    BSTNode *Curr = new BSTNode;
+                    Curr = MinNode(p->right);
+                    // cout << "minnode = "<<Curr->value<<"\n";
+                    int num = Curr->value;
+                    delete_Node(root, root, Curr->value);
+                    if (previous->value == p->value)
+                    {
+                        previous->value = num;
+                    }
+                    else if (previous->left->value == p->value)
+                    {
+                        previous->left->value = num;
+                    }
+                    else
+                    {
+                        previous->right->value = num;
+                    }
                 }
             }
         }
     }
-  void remove(int value) { delete_element(root, root, value); }
-  BSTNode *MinNode(BSTNode *a) {
+    void remove(int value)
+    {
+        delete_Node(root, root, value);
+    }
+    BSTNode *MinNode(BSTNode *p)
+    {
 
-    /* loop down to find the leftmost leaf */
-    while (a != nullptr && a->left != nullptr)
-      a = a->left;
+        /* loop down to find the leftmost leaf */
+        while (p != nullptr && p->left != nullptr)
+            p = p->left;
 
-    return a;
-  }
+        return p;
+    }
 };

@@ -34,8 +34,6 @@ public:
 
 
 	void decode(string code) {
-    /*
-    Write your code here
-    */
+		
 	}
 };
