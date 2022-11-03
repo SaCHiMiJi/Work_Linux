@@ -1,0 +1,3 @@
+int* updatehuman(int* arr){
+
+// }
