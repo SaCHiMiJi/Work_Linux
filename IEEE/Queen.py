@@ -29,11 +29,10 @@ def main():
         b = get_number()
         c = 0
         d = 0
-        
         dumy = set()
         while c != a:
             dumy.add(tuple(c,b))
-            c+=1;
+            c+=1
         while d != b:
             dumy.add(tuple(a,d))
             d+=1
