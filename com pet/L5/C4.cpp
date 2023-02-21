@@ -5,21 +5,45 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int count = 0,c =0,row =0;
     string str;
-
     cin >> str;
-    set<char> x;
+    char l_str[1000];
     for (int i = 0; i < str.length(); i++)
     {
-        if (str[i] >= 'A' && str[i] <= 'Z')
+        if (i == 0)
         {
-            x.insert(str[i]);
+            l_str[0] = str[i];
+            count++;
+            row++;
         }
-        
-    } 
-    
-    cout << x.size();
+        else
+        {
+            for (int j = 0; j < row; ++j)
+            {
+                // cout << "i : " << i << endl;
+                // cout << "j : " << j << endl;
+                if (l_str[j] >= str[i])
+                {
+                    // cout << "update" << endl;
+                    l_str[j] = str[i];
+                    c++;
+                    break;
+                }
+            }
+            if (c != 1)
+            {
+                l_str[row] = str[i];
+                row++;
+                count += 1;
+            }
+            else{
+                c = 0;
+            }
+        }
+    }
+
+    cout << count << endl;
 
     return 0;
 }
