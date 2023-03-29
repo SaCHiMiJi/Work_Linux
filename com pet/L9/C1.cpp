@@ -1,114 +1,143 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
-#define N 20
-#define MAX (1 + (1 << 6))
-#define inf 0x7fffffff
-int arr[N];
-int tree[MAX];
-int lazy[MAX];
 
-void build_tree(int node, int a, int b)
+class SegmentTree
 {
-    // Out of range
-    if (a > b)
-        return;
-    // Leaf node
-    if (a == b)
+private:
+    int *tree;
+    int *lazy;
+    int size;
+
+    void push(int node, int left, int right)
     {
-        tree[node] = arr[a];
-        return;
-    }
-    // Init left and right child
-    build_tree(node * 2, a, (a + b) / 2);
-    build_tree(node * 2 + 1, 1 + (a + b) / 2, b);
-    // Init node value
-    tree[node] = max(tree[node * 2], tree[node * 2 + 1]);
-}
-
-void update_tree(int node, int a, int b, int i, int j, int value)
-{
-    if (lazy[node] != 0)
-    {                             // This node needs to be updated
-        tree[node] += lazy[node]; // Update it
-        if (a != b)
+        if (lazy[node])
         {
-            lazy[node * 2] += lazy[node];     // Mark child as lazy
-            lazy[node * 2 + 1] += lazy[node]; // Mark child as lazy
+            tree[node] = right - left + 1 - tree[node]; // toggle the count
+            if (left != right)
+            {
+                lazy[node * 2] ^= 1;     // toggle left child's lazy flag
+                lazy[node * 2 + 1] ^= 1; // toggle right child's lazy flag
+            }
+            lazy[node] = 0; // clear current node's lazy flag
         }
-        lazy[node] = 0; // Reset it
     }
-    if (a > b || a > j || b < i) // Current segment is not within range [i, j]
-        return;
-    if (a >= i && b <= j)
-    { // Segment is fuinty within range
-        tree[node] += value;
-        if (a != b)
-        {
-            lazy[node * 2] += value;
-            lazy[node * 2 + 1] += value;
-        }
-        return;
-    }
-    update_tree(node * 2, a, (a + b) / 2, i, j, value); // Updating left child
-    update_tree(1 + node * 2, 1 + (a + b) / 2, b, i, j, value);
-    tree[node] = max(tree[node * 2], tree[node * 2 + 1]);
-}
 
-int query_tree(int node, int a, int b, int i, int j, int val)
-{
-    if (a > b || a > j || b < i)
-        return -inf;
-    if (lazy[node] != 0)
-    {                             // This node needs to be updated
-        tree[node] += lazy[node]; // Update it
-        if (a != b)
-        { // Mark child as lazy
-            lazy[node * 2] += lazy[node];
-            lazy[node * 2 + 1] += lazy[node];
+    void build(vector<bool> &values, int node, int left, int right)
+    {
+        if (left == right)
+        {
+            tree[node] = values[left];
+            return;
         }
-        lazy[node] = 0; // Reset it
+
+        int mid = (left + right) / 2;
+        build(values, node * 2, left, mid);
+        build(values, node * 2 + 1, mid + 1, right);
+        tree[node] = tree[node * 2] + tree[node * 2 + 1];
     }
-    if (a >= i && b <= j)
-        return 1;
-    int q1 = query_tree(node * 2, a, (a + b) / 2, i, j);
-    int q2 = query_tree(1 + node * 2, 1 + (a + b) / 2, b, i, j);
-    int res = q1 + q2; // Return final result
-    return res;
-}
+
+    int query(int node, int left, int right, int qLeft, int qRight)
+    {
+        push(node, left, right);
+
+        if (left > qRight || right < qLeft)
+        {
+            return 0;
+        }
+
+        if (qLeft <= left && right <= qRight)
+        {
+            return tree[node];
+        }
+
+        int mid = (left + right) / 2;
+        int leftCount = query(node * 2, left, mid, qLeft, qRight);
+        int rightCount = query(node * 2 + 1, mid + 1, right, qLeft, qRight);
+        return leftCount + rightCount;
+    }
+
+    void update(int node, int left, int right, int uLeft, int uRight)
+    {
+        push(node, left, right);
+
+        if (left > uRight || right < uLeft)
+        {
+            return;
+        }
+
+        if (uLeft <= left && right <= uRight)
+        {
+            tree[node] = right - left + 1 - tree[node]; // toggle the count
+            if (left != right)
+            {
+                lazy[node * 2] ^= 1;     // toggle left child's lazy flag
+                lazy[node * 2 + 1] ^= 1; // toggle right child's lazy flag
+            }
+            return;
+        }
+
+        int mid = (left + right) / 2;
+        update(node * 2, left, mid, uLeft, uRight);
+        update(node * 2 + 1, mid + 1, right, uLeft, uRight);
+        tree[node] = tree[node * 2] + tree[node * 2 + 1];
+    }
+
+public:
+    SegmentTree(vector<bool> &values, int N)
+    {
+        size = N;
+        tree = new int[4 * size];
+        lazy = new int[4 * size]();
+        build(values, 1, 0, size - 1);
+    }
+
+    int query(int left, int right)
+    {
+        return query(1, 0, size - 1, left, right);
+    }
+
+    void update(int left, int right)
+    {
+        update(1, 0, size - 1, left, right);
+    }
+
+    ~SegmentTree()
+    {
+        delete[] tree;
+        delete[] lazy;
+    }
+};
 
 int main()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int n, Q, i, X, S, T, K, num;
-    char mode;
-    cin >> n >> Q;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
 
-    for (int i = 0; i < n; i++)
+    int N, Q;
+    scanf("%d %d\n", &N, &Q);
+
+    vector<bool> values(N, false);
+    SegmentTree tree(values, N);
+
+    for (int i = 0; i < Q; i++)
     {
-        cin >> num;
-        arr[i] = num;
-    }
-    build_tree(1, 0, N - 1);
-    memset(lazy, 0, sizeof(lazy));
-    for (int j = 0; j < Q; j++)
-    {
-        cin >> mode;
-        if (mode == 'M')
+        int C, S, T;
+        scanf("%d %d %d\n", &C, &S, &T);
+
+        if (C == 0)
         {
-            cin >> i >> X;
-            update_tree(1, 0, n - 1, 0, i, X);
+            tree.update(S - 1, T - 1);
         }
         else
         {
-            cin >> S >> T >> K;
-            cout << (long long)query_tree(1, 0, n - 1, K, S) << endl;
+            printf("%d \n", tree.query(S - 1, T - 1));
         }
     }
-
-    // update_tree(1, 0, N - 1, 0, 6, 5);
-    // update_tree(1, 0, N - 1, 7, 10, 12);
-    // update_tree(1, 0, N - 1, 10, N - 1, 100);
-    // cout << query_tree(1, 0, N - 1, 0, N - 1) << endl;
-    return 0;
 }
+
+// 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 = 0
+// 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 = 7 (0-6)
+// 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 = 8 (3-11)
+// 1 1 1 0 0 0 0 1 1 1 0 0 1 1 1 1 1 0 0 0 0 0 = 11 (10-16)

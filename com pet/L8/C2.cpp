@@ -1,109 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define N 20
-#define MAX (1 + (1 << 6))
-#define inf 0x7fffffff
-int arr[N];
-int tree[MAX];
-int lazy[MAX];
 
-void build_tree(int node, int a, int b)
+const int N=1e5+5;
+
+int n,q,l,r,x,y,z;
+int a[N];
+int t[N*4];
+
+void build(int p,int l,int r)
 {
-    // Out of range
-    if (a > b)
-        return;
-    // Leaf node
-    if (a == b)
+    if(l==r)
     {
-        tree[node] = arr[a];
-        return;
+        t[p]=a[l];
+        return ;
     }
-    // Init left and right child
-    build_tree(node * 2, a, (a + b) / 2);
-    build_tree(node * 2 + 1, 1 + (a + b) / 2, b);
-    // Init node value
-    tree[node] = max(tree[node * 2], tree[node * 2 + 1]);
+    int mid=(l+r)/2;
+    build(p*2,l,mid);
+    build(p*2+1,mid+1,r);
+    t[p]=min(t[p*2],t[p*2+1]);
 }
 
-void update_tree(int node, int start, int end, int idx, int val) {
-    if (start == end) {
-        tree[node] = val;
+void update(int p,int l,int r,int x,int y)
+{
+    if(l==r)
+    {
+        t[p]=y;
+        return ;
     }
-    else {
-        int mid = (start + end) / 2;
-        if (start <= idx && idx <= mid) {
-            update_tree(node * 2, start, mid, idx, val);
-        } 
-        else {
-            update_tree(node * 2 + 1, mid + 1, end, idx, val);
-        }
-        tree[node] = tree[node * 2] + tree[node * 2 + 1];
-    }
+    int mid=(l+r)/2;
+    if(x<=mid)
+        update(p*2,l,mid,x,y);
+    else
+        update(p*2+1,mid+1,r,x,y);
+    t[p]=min(t[p*2],t[p*2+1]);
 }
 
-int query_tree(int node, int a, int b, int i, int j, int val)
+int query(int p,int l,int r,int x,int y)
 {
-    
-    if (a > b || a > j || b < i)
-    {
-        return 0;
-    }   if (lazy[node] != 0)
-    {                             // This node needs to be updated
-        tree[node] += lazy[node]; // Update it
-        if (a != b)
-        { // Mark child as lazy
-            lazy[node * 2] += lazy[node];
-            lazy[node * 2 + 1] += lazy[node];
-        }
-        lazy[node] = 0; // Reset it
-    }
-
-    if (a >= i && b <= j)
-    {
-        if (tree[node] <= val)
-        {
-            return 1;
-        }
-        return 0;
-    }
-
-    int q1 = query_tree(node * 2, a, (a + b) / 2, i, j, val);
-    int q2 = query_tree(1 + node * 2, 1 + (a + b) / 2, b, i, j, val);
-    int res = q1 + q2; // Return final result
-    return res;
+    if(l>=x&&r<=y)
+        return t[p];
+    int mid=(l+r)/2,ans=1e9;
+    if(x<=mid)
+        ans=min(ans,query(p*2,l,mid,x,y));
+    if(y>mid)
+        ans=min(ans,query(p*2+1,mid+1,r,x,y));
+    return ans;
 }
 
 int main()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int n, Q, i, X, S, T, K, num;
-    char mode;
-    cin >> n >> Q;
-
-    build_tree(1, 0, n - 1);
-    memset(lazy, 0, sizeof(lazy));
-
-    for (int i = 0; i < n; i++)
+    cin>>n>>q;
+    for(int i=1;i<=n;i++)
+        cin>>a[i];
+    build(1,1,n);
+    while(q--)
     {
-        cin >> num;
-        arr[i] = num;
-    }
-
-    for (int j = 0; j < Q; j++)
-    {
-        cin >> mode;
-        if (mode == 'M')
+        char opt;
+        cin>>opt;
+        if(opt=='M')
         {
-            cin >> i >> X;
-            update_tree(1, 0, n - 1, i - 1, X);
+            cin>>x>>y;
+            update(1,1,n,x,y);
         }
         else
         {
-            cin >> S >> T >> K;
-            cout << query_tree(1, 0, n - 1, S - 1, T - 1, K) << endl;
+            cin>>x>>y>>z;
+            int k=query(1,1,n,x,y);
+            if(k<=z)
+                cout<<y-x+1<<endl;
+            else
+                cout<<0<<endl;
         }
     }
-
     return 0;
 }

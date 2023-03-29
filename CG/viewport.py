@@ -12,8 +12,8 @@ x = 0.34
 y = 0.34
 
 # Window dimenstions.
-width = 300
-height = 500
+width = 1000
+height = 800
 axrng = 1.0
 
 
@@ -26,14 +26,14 @@ def init():
 def transform():
     global x, y
     glClear(GL_COLOR_BUFFER_BIT)
-
+    #image
     yw_max = 500  # height
     xw_max = 500  # width
     yw_min = 0  # height
     xw_min = 0  # width
-
-    yv_max = 500  # height
-    xv_max = 750  # width
+    #viewport
+    yv_max = 450  # height
+    xv_max = 450  # width
     yv_min = 0  # height
     xv_min = 0  # width
 
@@ -84,16 +84,20 @@ def transform():
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
 
+     # Apply the transformation to the object.
+    glPushMatrix()
+    glMultMatrixf(win_view)
+    glTranslatef( -0.8,0,0.)
     # Enable texturing.
     glEnable(GL_TEXTURE_2D)
     glBegin(GL_QUADS)
-    glTexCoord2f(0.0, 0.0)
-    glVertex2f(-0.5, -0.5)
-    glTexCoord2f(0.0, 1.0)
-    glVertex2f(-0.5, 0.5)
-    glTexCoord2f(1.0, 1.0)
-    glVertex2f(0.5, 0.5)
     glTexCoord2f(1.0, 0.0)
+    glVertex2f(-0.5, -0.5)
+    glTexCoord2f(1.0, 1.0)
+    glVertex2f(-0.5, 0.5)
+    glTexCoord2f(0.0, 1.0)
+    glVertex2f(0.5, 0.5)
+    glTexCoord2f(0.0, 0.0)
     glVertex2f(0.5, -0.5)
     glEnd()
 
@@ -101,13 +105,60 @@ def transform():
 
     # Finish the frame.
     glPopMatrix()
+
+    # Apply the transformation to the object.
+    glPushMatrix()
+    glMultMatrixf(win_norm)
+    glScalef(100,100,100)
+    glTranslatef( 2.7,2,0.)
+    # Enable texturing.
+    glEnable(GL_TEXTURE_2D)
+    glBegin(GL_QUADS)
+    glTexCoord2f(1.0, 0.0)
+    glVertex2f(-0.5, -0.5)
+    glTexCoord2f(1.0, 1.0)
+    glVertex2f(-0.5, 0.5)
+    glTexCoord2f(0.0, 1.0)
+    glVertex2f(0.5, 0.5)
+    glTexCoord2f(0.0, 0.0)
+    glVertex2f(0.5, -0.5)
+    glEnd()
+
+    glDisable(GL_TEXTURE_2D)
+
+    # Finish the frame.
+    glPopMatrix()
+
+
+    # Apply the transformation to the object.
+    glPushMatrix()
+    glMultMatrixf(full_transform)
+    glTranslatef( 1,-0.25,0.)
+    # Enable texturing.
+    glEnable(GL_TEXTURE_2D)
+    glBegin(GL_QUADS)
+    glTexCoord2f(1.0, 0.0)
+    glVertex2f(-0.5, -0.5)
+    glTexCoord2f(1.0, 1.0)
+    glVertex2f(-0.5, 0.5)
+    glTexCoord2f(0.0, 1.0)
+    glVertex2f(0.5, 0.5)
+    glTexCoord2f(0.0, 0.0)
+    glVertex2f(0.5, -0.5)
+    glEnd()
+
+    glDisable(GL_TEXTURE_2D)
+
+    # Finish the frame.
+    glPopMatrix()
+
     glutSwapBuffers()
 
 
 def main():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE)
-    glutInitWindowPosition(100, 100)
+    glutInitWindowPosition(400, 100)
     glutInitWindowSize(width, height)
     glutCreateWindow('Viewport')
     glutDisplayFunc(transform)

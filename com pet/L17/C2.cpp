@@ -1,43 +1,82 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
-#define DFS_WHITE -1
-#define DFS_BLACK 1
-vector<vii> AdjList;
-vi dfs_num;
-int numCC;
-
-void dfs(int u) {
-    printf(" %d", u);
-    dfs_num[u] = DFS_BLACK;
-    for (int j = 0; j < (int)AdjList[u].size(); j++) {
-        ii v = AdjList[u][j];
-        if (dfs_num[v.first] == DFS_WHITE)
-            dfs(v.first);   
+vector<char> getAlphabetFromA(char z)
+{
+    vector<char> alphabet;
+    for (char c = 'A'; c <= z; c++)
+    {
+        alphabet.push_back(c);
     }
+    return alphabet;
 }
 
-int main(){
-    int V, total_neighbors, id, weight;
-    scanf("%d", &V);
-    AdjList.assign(V, vii());
-    for (int i = 0; i < V; i++) {
-        scanf("%d", &total_neighbors);
-        for (int j = 0; j < total_neighbors; j++) {
-            scanf("%d %d", &id, &weight);
-            AdjList[i].push_back(ii(id, weight));
+// count connected ghraph
+int countConnectedComponents(vector<char> node, vector<pair<char, char>> edges)
+{
+    int count = 0;
+    vector<char> visited;
+    for (int i = 0; i < node.size(); i++)
+    {
+        if (find(visited.begin(), visited.end(), node[i]) == visited.end())
+        {
+            count++;
+            queue<char> q;
+            q.push(node[i]);
+            while (!q.empty())
+            {
+                char current = q.front();
+                q.pop();
+                visited.push_back(current);
+                for (int j = 0; j < edges.size(); j++)
+                {
+                    if (edges[j].first == current)
+                    {
+                        if (find(visited.begin(), visited.end(), edges[j].second) == visited.end())
+                        {
+                            q.push(edges[j].second);
+                        }
+                    }
+                    else if (edges[j].second == current)
+                    {
+                        if (find(visited.begin(), visited.end(), edges[j].first) == visited.end())
+                        {
+                            q.push(edges[j].first);
+                        }
+                    }
+                }
+            }
         }
     }
-    numCC = 0;
-    dfs_num.assign(V, DFS_WHITE);
-    for (int i = 0; i < V; i++)
-        if (dfs_num[i] == DFS_WHITE){
-            printf("Component %d:", ++numCC);
-            dfs(i); printf("\n");
-        }
-    printf("There are %d connected components\n", numCC);
-    return 0;
+    return count;
+}
+
+int main()
+{
+    char A;
+    char x, y;
+
+    scanf("%c\n", &A);
+    vector<char> node = getAlphabetFromA(A);
+
+    // for (int i = 0; i < node.size(); i++)
+    // {
+    //     cout << node[i] << " ";
+    // }
+    // cout << endl;
+
+    vector<pair<char, char>> edges;
+    while (scanf("%c%c\n", &x, &y) != EOF)
+    {
+        edges.push_back(make_pair(x, y));
+    }
+
+    // for (int i = 0; i < edges.size(); i++)
+    // {
+    //     cout << edges[i].first << "-" << edges[i].second << endl;
+    // }
+    // cout << endl;
+
+    int result = countConnectedComponents(node, edges);
+    cout << result << endl;
 }
