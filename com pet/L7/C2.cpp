@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int query(int l, int r, int n, long max_block[], long arr[])
