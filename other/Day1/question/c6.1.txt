@@ -1,0 +1,36 @@
+11:19:15 From SUTASINEE THOVUTTIKUL To Everyone:
+	6.1 ……..type(17)
+11:19:16 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	int
+11:19:16 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	int
+11:19:16 From โกวุฒิ (มาร์ค) To Everyone:
+	Int
+11:19:16 From Atirad Amchaeng (SAII) To Everyone:
+	int
+11:19:17 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	int
+11:19:17 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	int
+11:19:17 From ศุภกฤต ศรีเจริญ To Everyone:
+	int
+11:19:18 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	int
+11:19:18 From อนุวิท ยิ่งสมัคร (เอริ์ท) To Everyone:
+	int
+11:19:18 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	Int
+11:19:19 From อัครวินท์ ศะศิเดโช(จูเนียร์) To Everyone:
+	int
+11:19:21 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	int
+11:19:22 From ณํฏฐเอก เม่ากลาง (ปลื้ม) To Everyone:
+	int
+11:19:23 From อชิระ นันติ To Everyone:
+	int'
+11:19:23 From ภีม_นภาชนก สาระจันทร์ To Everyone:
+	int
+11:19:25 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	int
+11:19:25 From พิรภพ(ภพ) To Everyone:
+	Int

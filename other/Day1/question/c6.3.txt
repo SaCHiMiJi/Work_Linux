@@ -1,0 +1,44 @@
+11:20:58 From SUTASINEE THOVUTTIKUL To Everyone:
+	6.3……..type(’17’)
+11:20:59 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	str
+11:20:59 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	str
+11:20:59 From ปอนด์_ภัทรพล To Everyone:
+	str
+11:20:59 From Atirad Amchaeng (SAII) To Everyone:
+	str
+11:20:59 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	str
+11:21:00 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	str
+11:21:00 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	str'
+11:21:00 From พิรภพ(ภพ) To Everyone:
+	Str
+11:21:00 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	Str
+11:21:02 From ศุภกฤต ศรีเจริญ To Everyone:
+	str
+11:21:03 From โกวุฒิ (มาร์ค) To Everyone:
+	Str
+11:21:04 From ภัชภากร จารุพันธ์(ไผ่) To Everyone:
+	str
+11:21:04 From อัครวินท์ ศะศิเดโช(จูเนียร์) To Everyone:
+	str
+11:21:05 From นภาชนก สาระจันทร์(ภีม) To Everyone:
+	str
+11:21:05 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	str
+11:21:05 From ปฐมพงศ์ โอฬารวงศ์ (บิว) To Everyone:
+	str
+11:21:06 From สุภาพ ลุงพงษ์(สุภาพ) To Everyone:
+	str
+11:21:07 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	str
+11:21:07 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	str
+11:21:09 From สุวรรณภูมิ ไชยวุฒิ To Everyone:
+	str
+11:21:11 From พสิษฐ์ พรมพราย (ข้าวปั้น) To Everyone:
+	Str

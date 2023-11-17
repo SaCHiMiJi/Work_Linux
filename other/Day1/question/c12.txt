@@ -1,0 +1,18 @@
+13:35:18 From SUTASINEE THOVUTTIKUL To Everyone:
+	12 C  = ?
+13:35:36 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	c = -57.6
+13:35:36 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	0
+13:35:41 From Atirad Amchaeng (SAII) To Everyone:
+	-57.6 C
+13:35:41 From พิรภพ(ภพ) To Everyone:
+	57.6
+13:35:45 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	c=-57.6
+13:35:58 From โกวุฒิ (มาร์ค) To Everyone:
+	-57.6
+13:36:03 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	-57.6
+13:36:19 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	-57.6

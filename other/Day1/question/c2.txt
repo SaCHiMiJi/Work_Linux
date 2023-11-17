@@ -1,0 +1,16 @@
+10:15:31 From SUTASINEE THOVUTTIKUL To Everyone:
+	2….code นี้รับช้อมูลกี่ ตัว
+10:18:12 From โกวุฒิ (มาร์ค) To Everyone:
+	1
+10:18:15 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	เป็นครับ
+10:18:17 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	1
+10:18:44 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	1
+10:18:57 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	4
+10:18:57 From โกวุฒิ (มาร์ค) To Everyone:
+	4
+10:19:38 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	str

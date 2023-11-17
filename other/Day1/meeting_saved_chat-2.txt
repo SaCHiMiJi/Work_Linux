@@ -1,0 +1,16 @@
+10:45:32 From โกวุฒิ (มาร์ค) To Everyone:
+	ได้ยินครับ
+10:47:36 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	เสียงอจ.กระตุกครับ
+10:47:41 From พิรภพ(ภพ) To Everyone:
+	อาจารย์กระตุกครับ
+10:47:42 From SUTASINEE THOVUTTIKUL To Everyone:
+	temp1 = int(input("Enter temperature (now): "))
+	print("Temperature is:", temp1)
+	
+	temp2 = int(input("Enter temperature (yesterday): "))
+	print("Yesterday, temperature was:", temp2)
+	
+	print("difference is:", temp1-temp2)
+	temp3 = temp1-temp2
+	print("difference is:", temp3)

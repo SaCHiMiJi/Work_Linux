@@ -1,0 +1,41 @@
+10:10:20 From SUTASINEE THOVUTTIKUL To Everyone:
+	1.......ทำไมใส่ 6 อีกรอบแล้วจึงหาร 2 ได้...........
+10:10:35 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	มี int
+10:10:40 From รังสิมันตุ์ หาลือ (ออฟติก) To Everyone:
+	int เป็นการรับเลขจำนวนเต็ม
+10:10:45 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	เพราะว่าเติมint หน้าcode
+10:10:53 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	มี int
+10:11:01 From พิรภพ(ภพ) To Everyone:
+	มี int
+10:11:03 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	เพราะมี int เเละ input ครับ
+10:11:05 From อชิระ นันติ To Everyone:
+	เติม int
+10:11:08 From สุวรรณภูมิ ไชยวุฒิ To Everyone:
+	เปลี่ยนตัวอักษรให้เป็น ค่า int
+10:11:08 From นายภาคิน สมกาศ (แท็ค) To Everyone:
+	=
+10:11:18 From ศุภกฤต ศรีเจริญ To Everyone:
+	มี int
+10:11:20 From ทัพพเศรษฐ์ ผกานนท์ ปี1 ห้อง EP To Everyone:
+	int
+10:11:24 From ณัฐพล มิ่งเชื้อ (อะตอม) To SUTASINEE THOVUTTIKUL(Privately):
+	มี int
+10:11:31 From ปฐมพงศ์ โอฬารวงศ์ (บิว) To Everyone:
+	int
+10:11:42 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	ใช้int
+10:14:30 From SUTASINEE THOVUTTIKUL To Everyone:
+	temp1 = input("Enter temperature (now): ")
+	print("Temperature is:", temp1)
+	
+	temp2 = input("Enter temperature (yesterday): ")
+	print("Yesterday, temperature was:", temp2)
+	
+	
+	print("difference is:", temp1-temp2)
+	temp3 = temp1-temp2
+	print("difference is:", temp3)

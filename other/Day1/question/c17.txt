@@ -1,0 +1,28 @@
+14:04:53 From SUTASINEE THOVUTTIKUL To Everyone:
+	17  x == 4 ?
+14:04:56 From Atirad Amchaeng (SAII) To Everyone:
+	false
+14:04:59 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	False
+14:05:04 From Junior Kub To Everyone:
+	False
+14:05:10 From พิรภพ(ภพ) To Everyone:
+	Flase
+14:05:11 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	False
+14:05:11 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	false
+14:05:15 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	false
+14:05:17 From สรวิชญ์ พนมเวช To Everyone:
+	False
+14:05:18 From กานต์รวี(มาย) To Everyone:
+	False
+14:05:21 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	f
+14:06:34 From chinnatee To Everyone:
+	False
+14:14:24 From นายธวลิต ปิงเมือง(กระติก) To Everyone:
+	t
+14:14:25 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	True

@@ -1,0 +1,56 @@
+13:17:37 From SUTASINEE THOVUTTIKUL To Everyone:
+	10 คำตอบของ ข้อ 2  x**2 + 4*y + 5
+13:17:51 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	14
+13:17:53 From พิรภพ(ภพ) To Everyone:
+	14
+13:17:58 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	14
+13:18:00 From สุภาพ ลุงพงษ์(สุภาพ) To Everyone:
+	14
+13:18:03 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	14
+13:18:07 From ปอนด์_ภัทรพล To Everyone:
+	14
+13:18:12 From Pongsakarn Prachanthakan To Everyone:
+	14
+13:18:16 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	14
+13:18:20 From Atirad Amchaeng (SAII) To Everyone:
+	14
+13:18:24 From วีราวัชร์ สุประดิษฐ์พงศ์(ไบร์ท) To Everyone:
+	14
+13:20:31 From chinnatee To Everyone:
+	14
+13:22:18 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	8*y**2 - 8*z
+13:23:16 From SUTASINEE THOVUTTIKUL To Everyone:
+	11 คำตอบของ ข้อ 2  8*y**2  - 8*z
+13:23:16 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	8
+13:23:16 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	8
+13:23:16 From ปอนด์_ภัทรพล To Everyone:
+	8
+13:23:17 From พิรภพ(ภพ) To Everyone:
+	8
+13:23:17 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	8
+13:23:17 From Atirad Amchaeng (SAII) To Everyone:
+	8
+13:23:18 From โกวุฒิ (มาร์ค) To Everyone:
+	8
+13:23:18 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	8
+13:23:19 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	8
+13:23:20 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	8
+13:23:21 From Junior Kub To Everyone:
+	ึ8
+13:23:36 From อนุวิท ยิ่งสมัคร (เอริ์ท) To Everyone:
+	8
+13:25:00 From SUTASINEE THOVUTTIKUL To Everyone:
+	c = 0
+	f = ……………………………
+	print("f =", f)

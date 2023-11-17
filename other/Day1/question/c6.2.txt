@@ -1,0 +1,44 @@
+11:19:59 From SUTASINEE THOVUTTIKUL To Everyone:
+	(6.2)…….typre(3.2)
+11:19:59 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	froat
+11:20:00 From Atirad Amchaeng (SAII) To Everyone:
+	float
+11:20:00 From ปอนด์_ภัทรพล To Everyone:
+	float
+11:20:00 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	float
+11:20:00 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	Float
+11:20:01 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	float
+11:20:02 From ศุภกฤต ศรีเจริญ To Everyone:
+	float
+11:20:02 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	float
+11:20:02 From โกวุฒิ (มาร์ค) To Everyone:
+	Float
+11:20:05 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	float
+11:20:05 From อัครวินท์ ศะศิเดโช(จูเนียร์) To Everyone:
+	flot
+11:20:05 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	float
+11:20:05 From ภัชภากร จารุพันธ์(ไผ่) To Everyone:
+	float
+11:20:06 From อชิระ นันติ To Everyone:
+	float
+11:20:06 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	float
+11:20:06 From สุวรรณภูมิ ไชยวุฒิ To Everyone:
+	float
+11:20:08 From พสิษฐ์ พรมพราย (ข้าวปั้น) To Everyone:
+	Float
+11:20:11 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	float
+11:20:11 From ภีม_นภาชนก สาระจันทร์ To Everyone:
+	float
+11:20:14 From พิรภพ(ภพ) To Everyone:
+	float
+11:20:36 From ปฐมพงศ์ โอฬารวงศ์ (บิว) To Everyone:
+	float

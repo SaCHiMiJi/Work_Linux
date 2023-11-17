@@ -1,0 +1,4 @@
+11:43:16 From SUTASINEE THOVUTTIKUL To Everyone:
+	9 สมการใน บรรทัดที่ 5 ตอบอะไร.......
+11:43:59 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	(pm_1+pm_2)/2

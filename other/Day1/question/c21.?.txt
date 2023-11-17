@@ -1,0 +1,26 @@
+14:30:27 From SUTASINEE THOVUTTIKUL To Everyone:
+	21 print(pm_1 > pm_2) T/F ?
+14:30:30 From Atirad Amchaeng (SAII) To Everyone:
+	false
+14:30:32 From พิรภพ(ภพ) To Everyone:
+	F
+14:30:32 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	f
+14:30:33 From โกวุฒิ (มาร์ค) To Everyone:
+	F
+14:30:33 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	f
+14:30:34 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	f
+14:30:35 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	f
+14:30:35 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	false
+14:30:36 From สรวิชญ์ พนมเวช To Everyone:
+	f
+14:30:37 From สุภาพ ลุงพงษ์(สุภาพ) To Everyone:
+	f
+14:30:38 From Junior Kub To Everyone:
+	F
+14:30:41 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	f

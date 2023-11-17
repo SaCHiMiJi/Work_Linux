@@ -1,0 +1,18 @@
+11:26:23 From SUTASINEE THOVUTTIKUL To Everyone:
+	pi = 3.14
+	radius = 11
+	area = pi*radius*radius
+11:34:55 From SUTASINEE THOVUTTIKUL To Everyone:
+	7 ลองตั้งชื่อตัวแปร ค่าฝุ่น pm 2.5
+11:35:13 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	pm
+11:35:34 From Atirad Amchaeng (SAII) To Everyone:
+	PM_25
+11:37:29 From SUTASINEE THOVUTTIKUL To Everyone:
+	# Practice 2
+	pm_1 = (input("Input PM2.5 base1: "))
+	pm_2 =(input("Input PM2.5 base2: "))
+	
+	print("base1:", pm_1, "base2:", )
+	avg = 
+	print("Average = ", avg)

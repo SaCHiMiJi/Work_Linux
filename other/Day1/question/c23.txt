@@ -1,0 +1,22 @@
+14:49:09 From SUTASINEE THOVUTTIKUL To Everyone:
+	23 elif temp_today < temp_yesterday is true …..temp_difference =  line 12 is ?????????
+14:49:23 From รังสิมันตุ์ หาลือ (ออฟติก) To Everyone:
+	yday-tday
+14:49:26 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	temp_difference = temp_yesterday - temp_today
+14:49:36 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	temp_yesterday - temp_today
+14:49:37 From อนุวิท ยิ่งสมัคร (เอริ์ท) To Everyone:
+	temp_yesterday-temp_today
+14:49:45 From สรวิชญ์ พนมเวช To Everyone:
+	temp_yesterday-temp_today
+14:49:49 From พิรภพ(ภพ) To Everyone:
+	temp_yesterday-temp_today
+14:49:54 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	temp_yesterday-temp_today
+14:50:20 From chinnatee To Everyone:
+	temp_yesterday-temp_today
+14:50:29 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	temp_yesterday-temp_today
+14:51:29 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	temp1=temp2

@@ -1,0 +1,46 @@
+11:13:59 From SUTASINEE THOVUTTIKUL To Everyone:
+	6. พิมพ์ float
+11:14:00 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	3.14
+11:14:00 From พิรภพ(ภพ) To Everyone:
+	1.43
+11:14:00 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	3.14
+11:14:00 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	7.77
+11:14:00 From รังสิมันตุ์ หาลือ (ออฟติก) To Everyone:
+	3.14
+11:14:00 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	11.11
+11:14:00 From ปอนด์_ภัทรพล To Everyone:
+	3.08
+11:14:00 From pai ping To Everyone:
+	1.2
+11:14:01 From Atirad Amchaeng (SAII) To Everyone:
+	3.28
+11:14:01 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	5.26
+11:14:01 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	4.25
+11:14:02 From อนุวิท ยิ่งสมัคร (เอริ์ท) To Everyone:
+	0.31
+11:14:03 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	3.1415
+11:14:04 From ศุภกฤต ศรีเจริญ To Everyone:
+	3.66
+11:14:05 From ณํฏฐเอก เม่ากลาง (ปลื้ม) To Everyone:
+	0.309
+11:14:05 From อัครวินท์ ศะศิเดโช(จูเนียร์) To Everyone:
+	5.5
+11:14:09 From ธันยบูรณ์ สายทอง(พร้อม) To Everyone:
+	2.25
+11:14:10 From โกวุฒิ (มาร์ค) To Everyone:
+	0.01
+11:14:10 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	4.76
+11:14:12 From ภูมินทร์ ประสิทธิชัย To Everyone:
+	9.99
+11:14:14 From ภัชภากร จารุพันธ์(ไผ่) To Everyone:
+	8.8
+11:14:16 From อชิระ นันติ To Everyone:
+	3.1425

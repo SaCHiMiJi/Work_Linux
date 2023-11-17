@@ -1,0 +1,24 @@
+13:27:09 From SUTASINEE THOVUTTIKUL To Everyone:
+	11 f = c ……………..
+13:27:21 From พิรภพ(ภพ) To Everyone:
+	32
+13:27:23 From ปอนด์_ภัทรพล To Everyone:
+	32
+13:27:23 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	f = c*9/5+32
+13:27:24 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	32
+13:27:25 From โกวุฒิ (มาร์ค) To Everyone:
+	32เหรอครับ
+13:27:29 From ณํฏฐเอก เม่ากลาง (ปลื้ม) To Everyone:
+	32
+13:27:42 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	c*9/5+32
+13:27:50 From พิรภพ(ภพ) To Everyone:
+	c*9/5+32
+13:28:05 From ณํฏฐเอก เม่ากลาง (ปลื้ม) To Everyone:
+	f=c*9/5+32
+13:28:10 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	f = c*9/5+32
+13:28:11 From Atirad Amchaeng (SAII) To Everyone:
+	f=c*9/5+32

@@ -1,0 +1,26 @@
+13:58:38 From SUTASINEE THOVUTTIKUL To Everyone:
+	16… n% 2 == 0 or n% 3 == 0
+13:58:48 From พิรภพ(ภพ) To Everyone:
+	24
+13:58:51 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	6
+13:58:52 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	9
+13:58:57 From ธนกฤต ยะอิน (ต๊อกแต๊ก) To Everyone:
+	21
+13:58:57 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	72
+13:58:57 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	12
+13:59:09 From อนุตร ดะรีพัตร์ (เซเว่น) To Everyone:
+	84
+13:59:09 From Atirad Amchaeng (SAII) To Everyone:
+	64
+13:59:14 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	96
+13:59:58 From SUTASINEE THOVUTTIKUL To Everyone:
+	16  n% 2 == 0 and n% 3 == 0
+14:01:16 From SUTASINEE THOVUTTIKUL To Everyone:
+	6, 12, 18,……ที่หาร 2  และ 3 ลงตัว
+14:04:10 From พิรภพ(ภพ) To Everyone:
+	มันคือการเปรียบเทียบรึป่าวครับ

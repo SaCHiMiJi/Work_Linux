@@ -1,0 +1,32 @@
+14:16:11 From SUTASINEE THOVUTTIKUL To Everyone:
+	20 print(x > 0 and x < 10)
+14:16:11 From Atirad Amchaeng (SAII) To Everyone:
+	true
+14:16:12 From รังสิมันตุ์ หาลือ (ออฟติก) To Everyone:
+	t
+14:16:14 From สิริขวัญ ยั่งยืนกุล (ไออุ่น) To Everyone:
+	True
+14:16:15 From นายสราวุฒิ นันทะวงศ์(แบงค์) To Everyone:
+	t
+14:16:15 From โกวุฒิ (มาร์ค) To Everyone:
+	F
+14:16:17 From ชนะวงศ์ โพธิวงค์ (พี) To Everyone:
+	t
+14:16:17 From ธีรภัทร์ ทรงสุภา (เคน) To Everyone:
+	T
+14:16:20 From สรวิชญ์ พนมเวช To Everyone:
+	t
+14:16:22 From นัฐวรรธ กองพล (เอ็น) To Everyone:
+	t
+14:16:23 From ธนญชัย ศรีวิชัยนวน (ภูเถิน) To Everyone:
+	t
+14:16:27 From พิรภพ(ภพ) To Everyone:
+	T
+14:16:28 From กานต์รวี(มาย) To Everyone:
+	T
+14:16:34 From ชัชชน เชื้อเดิม (เช) To Everyone:
+	t
+14:16:37 From โกวุฒิ (มาร์ค) To Everyone:
+	T
+14:16:57 From Junior Kub To Everyone:
+	T

@@ -1,0 +1,430 @@
+function genproductflex(category, ncol = 3) {
+  var pdata = getproductdata(category)
+  var pflex = getmultipleflex(pdata, ncol)
+  Logger.log(pflex)
+  return pflex
+}
+function doGet(request) {
+  // Change Spread Sheet url
+  var category = request.parameter.category
+  var ncol = request.parameter.ncol
+  //Logger.log(pname)
+  var result = genproductflex(category, ncol)
+  //Logger.log(jo)
+  result = JSON.stringify(result);
+  return ContentService.createTextOutput(result).setMimeType(ContentService.MimeType.JSON);
+}
+
+class gssheet {
+  constructor(sheeturl, sheetname) {
+    this.sheeturl = sheeturl;
+    this.sheetname = sheetname;
+    this.ss = SpreadsheetApp.openByUrl(sheeturl)
+    this.sheet = this.ss.getSheetByName(sheetname)
+    this.nrow = this.sheet.getLastRow()
+    this.ncol = this.sheet.getLastColumn()
+    this.data = this.sheet.getDataRange().getValues()
+    this.columns = this.data[0]
+    this.getcolumns = function (colList) {
+      var result = []
+      for (let c in colList) {
+        var colDat = []
+        var colName = colList[c]
+        var cind = this.columns.indexOf(colName)
+        for (let x in this.data) {
+          //Logger.log(x)
+          //Logger.log(this.data[x][cind])
+          colDat.push(this.data[x][cind]);
+        }
+        result.push(colDat)
+      }
+      return result
+    }
+    this.getrows = function (findcol, findval) {
+      var fcolList = this.getcolumns([findcol])[0]
+      //Logger.log(fcolList)
+      //Logger.log(fcolList.indexOf(findval))
+      var indices = []
+      //var idx = fcolList.indexOf(findval);
+      for (let i in fcolList) {
+        let rind = parseInt(i, 10) + 1
+        if (fcolList[i] === findval) {
+          let frow = this.sheet.getRange(rind, 1, 1, this.ncol).getValues()[0]
+          indices.push(frow);
+        }
+      }
+      return indices
+    }
+    this.getrowdict = function (findcol, findval) {
+      var fcolList = this.getcolumns([findcol])[0]
+      //Logger.log(fcolList)
+      //Logger.log(fcolList.indexOf(findval))
+      var indices = []
+      //var idx = fcolList.indexOf(findval);
+      for (let i in fcolList) {
+        let rind = parseInt(i, 10) + 1
+        if (fcolList[i] === findval) {
+          let frow = this.sheet.getRange(rind, 1, 1, this.ncol).getValues()[0]
+          let drow = {}
+          for (let c in this.columns) {
+            drow[this.columns[c]] = frow[c]
+          }
+          indices.push(drow);
+        }
+      }
+      return indices
+    }
+    this.deleterows = function (findcol, findval) {
+      var fcolList = this.getcolumns([findcol])[0]
+      var findcolind = this.columns.indexOf(findcol) + 1
+      var lastRow = this.sheet.getLastRow();
+      for (var i = lastRow; i > 0; i--) {
+        var range = this.sheet.getRange(i, findcolind);
+        var data = range.getValue();
+        Logger.log(data)
+        if (data === findval) {
+          this.sheet.deleteRow(i);
+        }
+      }
+    }
+
+    this.deleterows_v2 = function (findcol, findcol_2, findval, findval_2) {
+      var fcolList = this.getcolumns([findcol])[0]
+      var findcolind = this.columns.indexOf(findcol) + 1
+      var findcolind_2 = this.columns.indexOf(findcol_2) + 1
+      var lastRow = this.sheet.getLastRow();
+      for (var i = lastRow; i > 0; i--) {
+        var range = this.sheet.getRange(i, findcolind);
+        var range_2 = this.sheet.getRange(i, findcolind_2);
+        var data = range.getValue();
+        var data_2 = range_2.getValue();
+        // Logger.log(i)
+        if ((data === findval) && (data_2 = findval_2)) {
+          this.sheet.deleteRow(i);
+          break
+        }
+      }
+    }
+
+    this.updatevalue = function (findcol, findval, updatecol, updatevalue) {
+      var fcol = this.getcolumns([findcol])[0]
+      var rind = fcol.indexOf(findval) + 1
+      var cind = this.columns.indexOf(updatecol) + 1
+      //this.sheet
+      var cell = this.sheet.getRange(rind, cind).setValue(updatevalue)
+      //cell.setValue(100);
+      //return [rind,cind]
+    }
+
+    this.updatevalue_v2 = function (findcol, findval, updatecol, updatevalue, findcol_2, id) {
+      var fcol = this.getcolumns([findcol])[0]
+      var rind = fcol.indexOf(findval) + 1
+      var cind = this.columns.indexOf(updatecol) + 1
+      var findcolind_2 = this.columns.indexOf(findcol_2) + 1
+      //this.sheet
+      var lastRow = this.sheet.getLastRow();
+      for (var i = lastRow; i > 0; i--) {
+        var range = this.sheet.getRange(i, findcolind_2);
+        var data = range.getValue();
+        // Logger.log(data+'\n======\n'+id)
+        if (data == id) {
+
+          var cell = this.sheet.getRange(i, cind).setValue(updatevalue)
+          // Logger.log(cell)
+          break
+        }
+        // var rind = rind + 1
+
+        // var cind = cind + 1
+      }
+    }
+
+    this.getvalue = function (findcol, findval, getcol) {
+      var fcol = this.getcolumns([findcol])[0]
+      var rind = fcol.indexOf(findval) + 1
+      var cind = this.columns.indexOf(getcol) + 1
+      //this.sheet
+      var cell = this.sheet.getRange(rind, cind).getValue()
+      //cell.setValue(100);
+      return cell
+    }
+
+    this.getvalue_v2 = function (findcol, findcol_2, findval, findval_2, getcol) {
+      var fcol = this.getcolumns([findcol])[0]
+      var findcolind_2 = this.columns.indexOf(findcol_2) + 1
+      var rind = fcol.indexOf(findval) + 1
+      var cind = this.columns.indexOf(getcol) + 1
+      Logger.log(rind)
+      Logger.log(cind)
+      //this.sheet
+      var lastRow = this.sheet.getLastRow();
+      for (var i = lastRow; i > 0; i--) {
+
+        var range = this.sheet.getRange(i, findcolind_2);
+        var data = range.getValue();
+        if (data == findval_2) {
+          // Logger.log('--num--\n'+i)
+          Logger.log(data)
+          var cell = this.sheet.getRange(i, cind).getValue()
+          Logger.log(cell)
+          // cell.setValue(100);
+          return cell
+        }
+
+      }
+    }
+
+    this.getrowdict_v2 = function (findcol, findval) {
+      var fcolList = this.getcolumns([findcol])[0]
+      //Logger.log(fcolList)
+      //Logger.log(fcolList.indexOf(findval))
+      var indices = []
+      //var idx = fcolList.indexOf(findval);
+      for (let i in fcolList) {
+        let rind = parseInt(i, 10) + 1
+        if (fcolList[i].includes(findval)) {
+          let frow = this.sheet.getRange(rind, 1, 1, this.ncol).getValues()[0]
+          let drow = {}
+          for (let c in this.columns) {
+            drow[this.columns[c]] = frow[c]
+          }
+          indices.push(drow);
+        }
+      }
+      return indices
+    }
+    this.getrowdict_v3 = function (findcol, findval) {
+      var fcolList = this.getcolumns([findcol])[0]
+      //Logger.log(fcolList)
+      //Logger.log(fcolList.indexOf(findval))
+      var indices = []
+      //var idx = fcolList.indexOf(findval);
+      for (let i in fcolList) {
+        let rind = parseInt(i, 10) + 1
+        if (fcolList[i] <= findval) {
+          let frow = this.sheet.getRange(rind, 1, 1, this.ncol).getValues()[0]
+          let drow = {}
+          for (let c in this.columns) {
+            drow[this.columns[c]] = frow[c]
+          }
+          indices.push(drow);
+        }
+      }
+      return indices
+    }
+    this.find_data = function (id) {
+      let url = "";
+      let data = {
+        "collection": "",
+        "database": "",
+        "dataSource": "",
+        "filter": {
+          "รหัสนักศึกษา": id
+        }
+      };
+
+      const headers = {
+        'api-key': ''
+      };
+      Logger.log(JSON.stringify(data));
+
+      const options = {
+        'method': 'post',
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': "*",
+        'headers': headers,
+        'payload': JSON.stringify(data)
+      };
+
+
+      let response = JSON.parse(UrlFetchApp.fetch(url, options));
+      Logger.log(response)
+      return response
+    }
+    this.update_data = function (id, update) {
+      let url = "";
+      let data = {
+        "collection": "",
+        "database": "",
+        "dataSource": "",
+        "filter": {
+          "customer_id": id
+        },
+        "update": {
+          "$set": update
+        }
+      };
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'api-key': ''
+      };
+      Logger.log(JSON.stringify(data));
+
+      const options = {
+        'method': 'post',
+        'Access-Control-Request-Headers': "*",
+        'headers': headers,
+        'payload': JSON.stringify(data)
+      };
+
+
+      let response = JSON.parse(UrlFetchApp.fetch(url, options));
+      Logger.log(response)
+      return response
+    }
+
+    this.insert_many = function (documents) {
+      let url = "insertMany";
+      let data = {
+        "collection": "",
+        "database": "",
+        "dataSource": "",
+        "documents": documents
+      };
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'api-key': ''
+      };
+      Logger.log(JSON.stringify(data));
+
+      const options = {
+        'method': 'post',
+        'Access-Control-Request-Headers': "*",
+        'headers': headers,
+        'payload': JSON.stringify(data)
+      };
+
+
+      let response = JSON.parse(UrlFetchApp.fetch(url, options));
+      Logger.log(response)
+      return response
+    }
+
+    this.insert_one = function (documents) {
+      let url = "";
+      let data = {
+        "collection": "",
+        "database": "",
+        "dataSource": "",
+        "document": documents
+      };
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'api-key': ''
+      };
+      Logger.log(JSON.stringify(data));
+
+      const options = {
+        'method': 'post',
+        'Access-Control-Request-Headers': "*",
+        'headers': headers,
+        'payload': JSON.stringify(data)
+      };
+
+
+      let response = JSON.parse(UrlFetchApp.fetch(url, options));
+      Logger.log(response)
+      return response
+    }
+
+    this.collect_log = function (documents) {
+      let url = "";
+      let data = {
+        "collection": "",
+        "database": "",
+        "dataSource": "",
+        "document": documents
+      };
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'api-key': ''
+      };
+      Logger.log(JSON.stringify(data));
+
+      const options = {
+        'method': 'post',
+        'Access-Control-Request-Headers': "*",
+        'headers': headers,
+        'payload': JSON.stringify(data)
+      };
+
+
+      let response = JSON.parse(UrlFetchApp.fetch(url, options));
+      Logger.log(response)
+      return response
+    }
+  
+  }
+
+  
+
+}
+
+/* globally accessible factory method */
+function gsdataframe(sheeturl = '', sheetname = 'สินค้า') {
+  return new gssheet(sheeturl, sheetname);
+}
+
+function testdelete(sheeturl = '', sheetname = 'สินค้า') {
+  ss = new gssheet(sheeturl, '')
+  ss.deleterows('', '')
+}
+
+function testgetvalue(cust_id = "1234") {
+  var sheeturl = ''
+  var sheetname = ''
+  var psheet = gspandas.gsdataframe(sheeturl, sheetname)
+  var amount = psheet.find_data(cust_id)
+  Logger.log(amount['document'])
+}
+
+function testupdate(cust_id = "") {
+  var sheeturl = ''
+  var sheetname = ''
+  var psheet = gspandas.gsdataframe(sheeturl, sheetname)
+  var update = {
+    "name": "tony gaytaol",
+    "job": "sex worker"
+  }
+  var amount = psheet.update_data(cust_id, update)
+  Logger.log(amount)
+}
+function testinsertone() {
+  var sheeturl = ''
+  var sheetname = ''
+  var psheet = gspandas.gsdataframe(sheeturl, sheetname)
+  var docs = 
+    {
+      "รหัสนักศึกษา": "1234",
+      'ชื่อ' : "test",
+      "นามสกุล" : "test",
+      "รหัสผ่าน" : "08092545"
+    }
+  
+  var amount = psheet.insert_one(docs)
+  Logger.log(amount)
+
+}
+function testinsertmany() {
+  var sheeturl = ''
+  var sheetname = ''
+  var psheet = gspandas.gsdataframe(sheeturl, sheetname)
+  var docs = [
+    {
+      "รหัสนักศึกษา": "1234",
+    },
+    {
+      "รหัสนักศึกษา": "1235",
+    }
+  ]
+  var amount = psheet.insert_many(docs)
+  Logger.log(amount)
+
+}
+
+
+
