@@ -8,15 +8,12 @@ import (
 
 func player(Ch chan string, M_ch chan string, wg *sync.WaitGroup, name string) {
 	defer wg.Done()
-	count := 0 // for cut when pingpong 10 time
-	min := 10
-	max := 30
-	tt := rand.Intn(max-min+1) + min
+	tt := rand.Intn(5)
 	for {
 		msg := <-Ch
 		if msg == "hit" {
 			break
-		} else if (tt >= 15 && count >= 4) || (count >= 10) {
+		} else if tt >= 2 {
 			fmt.Println("Game Over")
 			M_ch <- name
 			Ch <- "hit"
@@ -30,7 +27,6 @@ func player(Ch chan string, M_ch chan string, wg *sync.WaitGroup, name string) {
 		} else {
 			fmt.Println(name+": Invalid message:", msg)
 		}
-		count++
 	}
 }
 

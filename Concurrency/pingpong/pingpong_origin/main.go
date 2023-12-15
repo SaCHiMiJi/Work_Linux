@@ -13,9 +13,9 @@ func ping(Ch chan string, wg *sync.WaitGroup) {
 		if msg == "ping" {
 			fmt.Println(msg)
 			Ch <- "pong"
-			pingCount++	
+			pingCount++
 		}
-		
+
 	}
 }
 
@@ -27,7 +27,7 @@ func pong(Ch chan string, wg *sync.WaitGroup) {
 		if msg == "pong" {
 			fmt.Println(msg)
 			Ch <- "ping"
-			pongCount++	
+			pongCount++
 		}
 	}
 }
